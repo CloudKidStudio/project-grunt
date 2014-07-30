@@ -1,1 +1,1 @@
-module.exports = require('grunt-game-build');
+module.exports = require('grunt-game-builder');
