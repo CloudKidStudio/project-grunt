@@ -1,0 +1,35 @@
+{
+	"name": "grunt-game-builder",
+	"version": "0.0.1",
+	"description": "Tasks and scaffolding for a game project",
+	"main": "./libs/index.js",
+	"author": {
+		"name": "Matt Karl",
+		"email": "matt@cloudkid.com"
+	},
+	"scripts": {
+		"preinstall": "./scripts/install.js",
+		"postinstall" : "./scripts/build.js"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/CloudKidStudio/GruntGameBuilder"
+	},
+	"dependencies": {
+		"grunt-contrib-jshint": "~0.10.0",
+		"grunt-contrib-less": "~0.11.0",
+		"grunt-contrib-uglify": "~0.5.0",
+		"grunt-contrib-clean": "~0.5.0",
+		"grunt-contrib-watch": "~0.6.1",
+		"load-grunt-tasks": "~0.6.0",
+		"underscore-contrib": "~0.3.0",
+		"grunt-bower-task": "~0.4.0"
+	},
+	"readme": "Game Build Process\n",
+	"readmeFilename": "README.md",
+	"bugs": {
+		"url": "https://github.com/CloudKidStudio/GruntGameBuilder/issues"
+	},
+	"homepage": "https://github.com/CloudKidStudio/GruntGameBuilder"
+}

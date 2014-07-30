@@ -1,0 +1,8 @@
+{
+	"name": "MyApp",
+	"private":true,
+	"dependencies": {
+		"jquery" : "~1",
+		"normalize-css" : "*"
+	}
+}

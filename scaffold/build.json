@@ -1,0 +1,16 @@
+{
+	"name" : "MyApp",
+	"version" : "1.0.0",
+	"main" : [
+		"src/main.js",
+		"src/main.less"
+	],
+	"libraries" : [
+		"components/normalize-css/normalize.css",
+		"components/jquery/dist/jquery.min.js"
+	],
+	"librariesDebug" : [
+		"components/normalize-css/normalize.css",
+		"components/jquery/dist/jquery.js"
+	]
+}
