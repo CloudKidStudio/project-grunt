@@ -112,7 +112,7 @@ module.exports = function(grunt)
 			},
 			release: {
 				files: {
-					'<%= cssFolder %>/main.min.css': '<%= build.css.main %>',
+					'<%= cssFolder %>/main.css': '<%= build.css.main %>',
 				},
 				options: {
 					compress: true
@@ -120,13 +120,13 @@ module.exports = function(grunt)
 			},
 			development: {
 				files: {
-					'<%= cssFolder %>/main.min.css': '<%= build.css.mainDebug %>',
+					'<%= cssFolder %>/main.css': '<%= build.css.mainDebug %>',
 				},
 				options: {
 					compress: true,
 					sourceMap: true,
-					sourceMapFilename: '<%= cssFolder %>/main.min.css.map',
-					sourceMapURL: 'main.min.css.map',
+					sourceMapFilename: '<%= cssFolder %>/main.css.map',
+					sourceMapURL: 'main.css.map',
 					sourceMapBasepath: '<%= cssFolder %>'
 				}
 			}
@@ -191,8 +191,8 @@ module.exports = function(grunt)
 				'<%= jsFolder %>/main.js'
 			],
 			css: [
-				'<%= cssFolder %>/*.min.css',
-				'<%= cssFolder %>/*.map'
+				'<%= cssFolder %>/main.css',
+				'<%= cssFolder %>/main.css.map'
 			],
 			libraries: [
 				'<%= cssFolder %>/libraries.css',
