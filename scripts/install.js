@@ -3,7 +3,7 @@
 // The root project folder
 var base = "../../";
 
-/*var fs = require('fs'),
+var fs = require('fs'); /*,
 	spawn = require('child_process').spawn,
 	npm = spawn('npm', 
 		['install', 'grunt', "--color", "always"],
