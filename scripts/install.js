@@ -1,44 +1,39 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
-var exec = require('child_process').exec;
-
+// The root project folder
 var base = "../../";
 
-// Create the required folders
-var folders = [
-	"src", 
-	"deploy", 
-	"deploy/assets", 
-	"deploy/assets/css", 
-	"deploy/logic"
-];
+var fs = require('fs'),
+	spawn = require('child_process').spawn,
+	npm = spawn('npm', 
+		['install', 'grunt', "--color", "always"],
+		{ cwd: base }
+	);
 
-// Make the folder structure
-for (var i = 0; i < folders.length; i++)
+npm.stdout.on('data', function (data) {
+	process.stdout.write(data);
+});
+
+npm.stderr.on('data', function (data) {
+	process.stdout.write(data);
+});
+
+/**
+*  Create a directory if it doesn't exist
+*  @method scaffoldDir
+*  @param {String} dir The directory path to create
+*/
+function scaffoldDir(dir)
 {
-	var folder = base + folders[i];
-	if (!fs.existsSync(folder))
-	{
-		fs.mkdirSync(folder);
-	}
+	fs.exists(base + dir, function(exists){
+		if (!exists)
+		{
+			fs.mkdir(base + dir, function(){
+				console.log("  " + dir + " ... added");
+			});
+		}
+	});
 }
-
-// Install grunt in the project
-exec('npm install grunt', 
-	{ cwd : base }, 
-	function (error, stdout, stderr) {
-		if (stderr !== null) {
-			console.log('' + stderr);
-		}
-		if (stdout !== null) {
-			console.log('' + stdout);
-		}
-		if (error !== null) {
-			console.log('' + error);
-		}
-	}
-);
 
 /**
 *  Create a file if it doesn't exist
@@ -48,16 +43,28 @@ exec('npm install grunt',
 */
 function scaffold(file, content)
 {
-	// Create the grunt file
-	if (!fs.existsSync(base + file))
-	{
-		if (!content && !fs.existsSync("scaffold/" + file))
+	fs.exists(base + file, function(exists){
+		if (!exists)
 		{
-			throw "File doesn't exist " + "'scaffold/" + file + "'";
+			if (!content && !fs.existsSync("scaffold/" + file))
+			{
+				throw "File doesn't exist " + "'scaffold/" + file + "'";
+			}
+			fs.writeFile(base + file, content || fs.readFileSync("scaffold/" + file), function(){
+				console.log("  " + file + " ... added");
+			});
 		}
-		fs.writeFileSync(base + file, content || fs.readFileSync("scaffold/" + file));
-	}
+	});
 }
+
+console.log("Creating project scaffolding...\n");
+
+// Create the required folders
+scaffoldDir("src"); 
+scaffoldDir("deploy"); 
+scaffoldDir("deploy/assets"); 
+scaffoldDir("deploy/assets/css"); 
+scaffoldDir("deploy/logic");
 
 // Copy the required files
 scaffold("Gruntfile.js");

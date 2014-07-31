@@ -1,19 +1,12 @@
 #!/usr/bin/env node
 
-var exec = require('child_process').exec;
+var spawn = require('child_process').spawn,
+	grunt = spawn('grunt', { cwd: '../../' });
 
-// Install grunt in the project
-exec('grunt', 
-	{ cwd : "../../" }, 
-	function (error, stdout, stderr) {
-		if (stderr !== null) {
-			console.log('' + stderr);
-		}
-		if (stdout !== null) {
-			console.log('' + stdout);
-		}
-		if (error !== null) {
-			console.log('' + error);
-		}
-	}
-);
+grunt.stdout.on('data', function (data) {
+	process.stdout.write(data);
+});
+
+grunt.stderr.on('data', function (data) {
+	process.stdout.write(data);
+});

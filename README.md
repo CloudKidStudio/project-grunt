@@ -116,7 +116,7 @@ The main JavaScript source building supports conditional compiling with global c
 if (DEBUG)
 {
 	// This code is only visible when built using the 'dev' task
-	console.log('Debug code here!');
+	alert('Debug code here!');
 }
 
 if (RELEASE)

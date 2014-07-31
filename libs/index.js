@@ -57,7 +57,8 @@ module.exports = function(grunt)
 							"DEBUG": false,
 							"RELEASE": true
 						},
-						dead_code: true
+						dead_code: true,
+						drop_console: true
 					}
 				}
 			},
