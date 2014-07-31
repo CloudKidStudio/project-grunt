@@ -49,10 +49,10 @@ Modify the **bower.json** file to include additional libraries into your project
 	"dependencies": {
 		"jquery" : "~1",
 		"normalize-css" : "*",
-		"easeljs" : "*",
-		"tweenjs" : "*",
-		"preloadjs" : "*",
-		"soundjs" : "*"
+		"EaselJS" : "*",
+		"TweenJS" : "*",
+		"PreloadJS" : "*",
+		"SoundJS" : "*"
 	}
 }
 ```
