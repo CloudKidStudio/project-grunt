@@ -22,9 +22,10 @@ mkdir MyProject && cd MyProject
 
 ### 2. Install Plugin
 
-The installation of the plugin is one line. This will create an empty project template structure which you can start to customize.
+The installation of the plugin requires installing Grunt first and then the plugin. This will create an empty project template structure which you can start to customize.
 
 ```shell
+npm install grunt
 npm install CloudKidStudio/GruntGameBuilder
 ```
 
