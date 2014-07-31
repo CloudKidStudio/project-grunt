@@ -141,3 +141,26 @@ Structure | Description
 **./build.json** | See above, the list of source files and libraries to build
 **./Gruntfile.js** | Contains the Grunt automation tasks
 **./package.json** | The list of Node dependencies
+
+## Extending Gruntfile.js
+
+The default **Gruntfile.js** can be extended easily to allow for custom tasks. Here's an example using [grunt-extend-config](https://www.npmjs.org/package/grunt-extend-config) to extend the `initConfig` in this plugin. 
+
+```js
+module.exports = function(grunt)
+{
+	// Default game builds
+	require('grunt-game-builder')(grunt);
+
+	// Include required tasks, should be installed
+	grunt.loadNpmTasks('grunt-extend-config');
+	grunt.loadNpmTasks('grunt-exec');
+
+	// Add additional tasks
+	grunt.extendConfig({
+		exec : {
+			echo_something: 'echo "This is something"'
+		}
+	});
+};
+```
