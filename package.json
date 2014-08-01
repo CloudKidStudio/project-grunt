@@ -14,7 +14,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/CloudKidStudio/GruntGameBuilder"
+		"url": "https://github.com/CloudKidStudio/grunt-game-builder"
 	},
 	"dependencies": {
 		"grunt-contrib-jshint": "~0.10.0",
@@ -28,7 +28,7 @@
 	},
 	"readmeFilename": "README.md",
 	"bugs": {
-		"url": "https://github.com/CloudKidStudio/GruntGameBuilder/issues"
+		"url": "https://github.com/CloudKidStudio/grunt-game-builder/issues"
 	},
-	"homepage": "https://github.com/CloudKidStudio/GruntGameBuilder"
+	"homepage": "https://github.com/CloudKidStudio/grunt-game-builder"
 }
