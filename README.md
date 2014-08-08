@@ -28,24 +28,16 @@ The installation of the plugin requires installing Grunt first and then the plug
 npm install grunt CloudKidStudio/grunt-game-builder
 ```
 
-### 3. Change Project Name
-
-There are a couple instance where you should manually change the name of your project. These are found:
-
-* **build.json** : Change the "name" property, required for building JavaScript
-* **bower.json** : Change the "name" property, required by Bower
-* **deploy/index.html** : Change the page `<title>`
-
 ## Adding Dependencies
 
 Grunt Game Builder is designed to easily include external dependencies into your project.
 
-Modify the **bower.json** file to include additional libraries into your project. For more information about using Bower please visit the [website](http://bower.io). For instance, if you wanted to include [CreateJS](http://createjs.com), **bower.json** might look like this:
+Modify the **bower.json** file to include additional libraries into your project. For more information about using Bower please visit the [website](http://bower.io). For instance, if you wanted to include [CreateJS](http://createjs.com), **bower.json** might look like this. Note that the _version_ and _name_ field is automatically updated from the **build.json** file.
 
 ```js
 {
 	"name": "MyApp",
-	"private":true,
+	"version":"0.0.1",
 	"dependencies": {
 		"jquery" : "~1",
 		"normalize-css" : "*",
@@ -92,6 +84,7 @@ Task | Description
 **libs** | Import and rebuild the external dependencies
 **libs-debug** | Import and rebuild the external dependencies including building source maps for better debugging
 **clean-all** | Delete all generated build files and delete components directory
+**update-bower-file** | Automatically update the _version_ and _name_ fields in **bower.json**
 
 ## Build File
 
