@@ -2,21 +2,7 @@
 
 // The root project folder
 var base = "../../";
-
-var fs = require('fs'); /*,
-	spawn = require('child_process').spawn,
-	npm = spawn('npm', 
-		['install', 'grunt', "--color", "always"],
-		{ cwd: base }
-	);
-
-npm.stdout.on('data', function (data) {
-	process.stdout.write(data);
-});
-
-npm.stderr.on('data', function (data) {
-	process.stdout.write(data);
-});*/
+var fs = require('fs');
 
 /**
 *  Create a directory if it doesn't exist
@@ -41,7 +27,7 @@ function scaffoldDir(dir)
 *  @param {String} file The file path
 *  @param {String|Object} content The default content for file
 */
-function scaffold(file, content)
+function scaffold(file, content, callback)
 {
 	fs.exists(base + file, function(exists){
 		if (!exists)
@@ -52,6 +38,7 @@ function scaffold(file, content)
 			}
 			fs.writeFile(base + file, content || fs.readFileSync("scaffold/" + file), function(){
 				console.log("  " + file + " ... added");
+				if (callback) callback();
 			});
 		}
 	});
@@ -72,7 +59,8 @@ scaffold("deploy/index.html");
 scaffold(".bowerrc");
 scaffold("package.json");
 scaffold("bower.json");
-scaffold("build.json");
-scaffold("src/main.js");
-scaffold("src/main.less");
+scaffold("build.json", null, function(){
+	scaffold("src/main.js");
+	scaffold("src/main.less");
+});
 scaffold(".gitignore", "node_modules\ncomponents");

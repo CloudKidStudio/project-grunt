@@ -3,13 +3,13 @@
 *  this converts the build.json file into useable file lists
 *  for running tasks on.
 */
-module.exports = function(grunt)
+module.exports = function(grunt, options)
 {	
 	// Use underscore utilities
 	var _ = require('underscore-contrib');
 
 	// The name of the build file
-	var filename = 'build.json';
+	var filename = options.cwd + '/build.json';
 
 	// Filter an array of files and only return the javascript files
 	var isJS = function(file){ return /\.js$/.test(file); };
