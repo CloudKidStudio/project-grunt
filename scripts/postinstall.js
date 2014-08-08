@@ -35,13 +35,13 @@ function gruntDefault()
 	prompt.start();
 	prompt.get([{
 			name : 'name',
-			description: 'The human-readable name of the library',
+			description: 'The human-readable name of the project',
 			pattern: /^[a-zA-Z\-0-9]+?$/,
 			message: "Name can only contain letters, numbers and hyphens",
 			required: true
 		}, {
 			name : 'version',
-			description: 'The starting version of the library',
+			description: 'The starting version of the project',
 			default: '0.0.1',
 			pattern: /^\d+\.\d+(\.\d+)?$/,
 			message: "Version must be in the format #.#.#",
