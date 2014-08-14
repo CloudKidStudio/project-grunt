@@ -84,6 +84,7 @@ Task | Description
 **libs** | Import and rebuild the external dependencies
 **libs-debug** | Import and rebuild the external dependencies including building source maps for better debugging
 **clean-all** | Delete all generated build files and delete components directory
+**clean-components** | Delete all downloaded Bower components
 **update-bower-file** | Automatically update the _version_ and _name_ fields in **bower.json**
 
 ## Build File
