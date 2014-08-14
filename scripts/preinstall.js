@@ -45,26 +45,26 @@ function scaffold(file, content, callback)
 	});
 }
 
-console.log("Creating project scaffolding...\n");
-
-// Create the required folders
-scaffoldDir("src"); 
-scaffoldDir("deploy"); 
-scaffoldDir("deploy/assets"); 
-scaffoldDir("deploy/assets/css"); 
-scaffoldDir("deploy/logic");
-
-// Copy the required files
-scaffold("Gruntfile.js");
-scaffold("deploy/index.html");
-scaffold(".bowerrc");
-scaffold("package.json");
-scaffold("bower.json");
+// Only scaffold the project if no build.json file is available
 scaffold("build.json", null, function(file){
+	
+	// Create the required folders
+	scaffoldDir("src"); 
+	scaffoldDir("deploy"); 
+	scaffoldDir("deploy/assets"); 
+	scaffoldDir("deploy/assets/css"); 
+	scaffoldDir("deploy/logic");
+
+	// Copy the required files
+	scaffold("Gruntfile.js");
+	scaffold("deploy/index.html");
+	scaffold(".bowerrc");
+	scaffold("package.json");
+	scaffold("bower.json");
 	scaffold("src/main.js");
 	scaffold("src/main.less");
+	scaffold(".gitignore", "node_modules\ncomponents");
 
 	// Add a build the build file to let the post
 	fs.writeFileSync('.buildFile', file);
 });
-scaffold(".gitignore", "node_modules\ncomponents");
