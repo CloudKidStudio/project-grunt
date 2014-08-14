@@ -24,6 +24,12 @@ module.exports = function(grunt)
 		'Remove all build files and components',
 		['clean']
 	);
+	
+	grunt.registerTask(
+		'clean-components',
+		'Remove all the bower components',
+		['clean:components']
+	);
 
 	grunt.registerTask(
 		'libs', 
