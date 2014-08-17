@@ -1,8 +1,16 @@
 {
 	"name": "MyApp",
-	"private":true,
+	"version": "1.0.0",
 	"dependencies": {
 		"jquery" : "~1",
 		"normalize-css" : "*"
-	}
+	},
+	"ignore": [
+		".gitignore",
+		".gitattributes",
+		"src",
+		"build.json",
+		"Gruntfile.js",
+		"package.js"
+	]
 }

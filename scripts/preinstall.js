@@ -26,6 +26,7 @@ function scaffoldDir(dir)
 *  @method create
 *  @param {String} file The file path
 *  @param {String|Object} content The default content for file
+*  @param {function} callback The callback function when done
 */
 function scaffold(file, content, callback)
 {
@@ -38,29 +39,32 @@ function scaffold(file, content, callback)
 			}
 			fs.writeFile(base + file, content || fs.readFileSync("scaffold/" + file), function(){
 				console.log("  " + file + " ... added");
-				if (callback) callback();
+				if (callback) callback(base + file);
 			});
 		}
 	});
 }
 
-console.log("Creating project scaffolding...\n");
+// Only scaffold the project if no build.json file is available
+scaffold("build.json", null, function(file){
+	
+	// Create the required folders
+	scaffoldDir("src"); 
+	scaffoldDir("deploy"); 
+	scaffoldDir("deploy/assets"); 
+	scaffoldDir("deploy/assets/css"); 
+	scaffoldDir("deploy/logic");
 
-// Create the required folders
-scaffoldDir("src"); 
-scaffoldDir("deploy"); 
-scaffoldDir("deploy/assets"); 
-scaffoldDir("deploy/assets/css"); 
-scaffoldDir("deploy/logic");
-
-// Copy the required files
-scaffold("Gruntfile.js");
-scaffold("deploy/index.html");
-scaffold(".bowerrc");
-scaffold("package.json");
-scaffold("bower.json");
-scaffold("build.json", null, function(){
+	// Copy the required files
+	scaffold("Gruntfile.js");
+	scaffold("deploy/index.html");
+	scaffold(".bowerrc");
+	scaffold("package.json");
+	scaffold("bower.json");
 	scaffold("src/main.js");
 	scaffold("src/main.less");
+	scaffold(".gitignore", "node_modules\ncomponents");
+
+	// Add a build the build file to let the post
+	fs.writeFileSync('.buildFile', file);
 });
-scaffold(".gitignore", "node_modules\ncomponents");

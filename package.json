@@ -1,6 +1,10 @@
 {
 	"name": "grunt-game-builder",
+<<<<<<< HEAD
 	"version": "0.0.5",
+=======
+	"version": "0.0.6",
+>>>>>>> FETCH_HEAD
 	"description": "Tasks and scaffolding for a game project",
 	"main": "./libs/index.js",
 	"author": {
@@ -8,8 +12,8 @@
 		"email": "matt@cloudkid.com"
 	},
 	"scripts": {
-		"preinstall": "./scripts/install.js",
-		"postinstall" : "./scripts/build.js"
+		"preinstall": "./scripts/preinstall.js",
+		"postinstall" : "./scripts/postinstall.js"
 	},
 	"license": "MIT",
 	"repository": {
@@ -24,7 +28,8 @@
 		"grunt-contrib-watch": "~0.6.1",
 		"underscore-contrib": "~0.3.0",
 		"grunt-bower-task": "~0.4.0",
-		"load-grunt-config": "~0.13.0"
+		"load-grunt-config": "~0.13.0",
+		"prompt": "~0.2.13"
 	},
 	"readmeFilename": "README.md",
 	"bugs": {
