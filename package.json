@@ -1,10 +1,6 @@
 {
 	"name": "grunt-game-builder",
-<<<<<<< HEAD
-	"version": "0.0.5",
-=======
-	"version": "0.0.6",
->>>>>>> FETCH_HEAD
+	"version": "0.0.7",
 	"description": "Tasks and scaffolding for a game project",
 	"main": "./libs/index.js",
 	"author": {
