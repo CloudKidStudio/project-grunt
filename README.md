@@ -141,6 +141,40 @@ Structure | Description
 **./Gruntfile.js** | Contains the Grunt automation tasks
 **./package.json** | The list of Node dependencies
 
+## Plugin Options
+
+The Grunt Game Builder plugin can acception additional options. Here's an example to add additional arguments:
+
+```js
+module.exports = function(grunt)
+{
+	require('grunt-game-builder')(grunt, {
+		jsFolder : "deploy/js",
+		cssFolder : "deploy/css"
+	});
+};
+```
+
+### options.autoInit
+
+A _boolean_ defaults to true. If grunt.initConfig() is automatically called. 
+
+### options.buildFile
+
+A _string_ defaults to "build.json". The name of the JSON file which contains the JavaScript, CSS files to build. See the Build File above for more information about what this does.
+
+### options.distFolder
+
+A _string_ defaults to "deploy". The base output folder where to save the compiled project files.
+
+### options.jsFolder
+
+A _string_ defaults to "deploy/logic". The base output folder for JavaScript files (libraries.js and main.js).
+
+### options.cssFolder
+
+A _string_ defaults to "deploy/assets/css". The base output folder for CSS files (libraries.css and main.css).
+
 ## Extending Gruntfile.js
 
 The default **Gruntfile.js** can be extended easily to allow for custom tasks. Here's an example using [grunt-extend-config](https://www.npmjs.org/package/grunt-extend-config) to extend the `initConfig` in this plugin. 

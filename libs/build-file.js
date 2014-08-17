@@ -9,7 +9,7 @@ module.exports = function(grunt, options)
 	var _ = require('underscore-contrib');
 
 	// The name of the build file
-	var filename = options.cwd + '/build.json';
+	var filename = options.cwd + '/' + (options.buildFile || 'build.json');
 
 	// Filter an array of files and only return the javascript files
 	var isJS = function(file){ return /\.js$/.test(file); };
