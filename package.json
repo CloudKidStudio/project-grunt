@@ -1,7 +1,7 @@
 {
-	"name": "grunt-game-builder",
+	"name": "grunt-project-builder",
 	"version": "0.0.7",
-	"description": "Tasks and scaffolding for a game project",
+	"description": "Tasks and scaffolding for an HTML project",
 	"main": "./libs/index.js",
 	"author": {
 		"name": "Matt Karl",
@@ -14,7 +14,7 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/CloudKidStudio/grunt-game-builder"
+		"url": "https://github.com/CloudKidStudio/grunt-project-builder"
 	},
 	"dependencies": {
 		"grunt-contrib-jshint": "~0.10.0",
@@ -29,7 +29,7 @@
 	},
 	"readmeFilename": "README.md",
 	"bugs": {
-		"url": "https://github.com/CloudKidStudio/grunt-game-builder/issues"
+		"url": "https://github.com/CloudKidStudio/grunt-project-builder/issues"
 	},
-	"homepage": "https://github.com/CloudKidStudio/grunt-game-builder"
+	"homepage": "https://github.com/CloudKidStudio/grunt-project-builder"
 }
