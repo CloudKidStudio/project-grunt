@@ -25,7 +25,7 @@ mkdir MyProject && cd MyProject
 The installation of the plugin requires installing Grunt first and then the plugin. This will create an empty project template structure which you can start to customize.
 
 ```shell
-npm install grunt grunt-project-builder
+npm install grunt grunt-game-builder
 ```
 
 ## Adding Dependencies
@@ -142,7 +142,7 @@ The Grunt Project Builder plugin can acception additional options. Here's an exa
 ```js
 module.exports = function(grunt)
 {
-	require('grunt-project-builder')(grunt, {
+	require('grunt-game-builder')(grunt, {
 		jsFolder : "deploy/js",
 		cssFolder : "deploy/css"
 	});
@@ -177,7 +177,7 @@ The default **Gruntfile.js** can be extended easily to allow for custom tasks.
 module.exports = function(grunt)
 {
 	// Include the project builder but don't init right away
-	var config = require('grunt-project-builder')(grunt, {
+	var config = require('grunt-game-builder')(grunt, {
 		autoInit: false
 	});
 
