@@ -2,7 +2,7 @@ module.exports = function(grunt)
 {
 	grunt.registerTask(
 		'default', 
-		'Default task to build all the game code', [
+		'Default task to build all the project code', [
 			'clean:js',
 			'jshint',
 			'uglify:release',
@@ -15,7 +15,7 @@ module.exports = function(grunt)
 
 	grunt.registerTask(
 		'dev',
-		'Development mode to build the game',
+		'Development mode to build the project',
 		['watch']
 	);
 

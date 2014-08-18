@@ -22,7 +22,7 @@ module.exports = function(grunt, options)
 		grunt.fail.fatal('no ' + filename + ' file is found');
 
 	// Load the build file which contains the list of 
-	// library and game files to build
+	// library and project files to build
 	var file = grunt.file.readJSON(filename);
 
 	// Error checking for required fields and types
@@ -75,10 +75,10 @@ module.exports = function(grunt, options)
 			// The library debug css files
 			librariesDebug : _.filter(file.librariesDebug || file.libraries, isCSS),
 
-			// The game css files
+			// The project css files
 			main : _.filter(file.main, isCSS),
 
-			// The game debug CSS
+			// The project debug CSS
 			mainDebug : _.filter(file.mainDebug || file.main, isCSS)
 		}
 	};
