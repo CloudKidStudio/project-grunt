@@ -1,6 +1,6 @@
-# Grunt Game Builder
+# Grunt Project Builder
 
-Grunt Game Builder is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML5 canvas games. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build. 
+Grunt Project Builder is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build. 
 
 ## Requirements
 
@@ -25,12 +25,12 @@ mkdir MyProject && cd MyProject
 The installation of the plugin requires installing Grunt first and then the plugin. This will create an empty project template structure which you can start to customize.
 
 ```shell
-npm install grunt grunt-game-builder
+npm install grunt grunt-project-builder
 ```
 
 ## Adding Dependencies
 
-Grunt Game Builder is designed to easily include external dependencies into your project.
+Grunt Project Builder is designed to easily include external dependencies into your project.
 
 Modify the **bower.json** file to include additional libraries into your project. For more information about using Bower please visit the [website](http://bower.io). For instance, if you wanted to include [CreateJS](http://createjs.com), **bower.json** might look like this. Note that the _version_ and _name_ field is automatically updated from the **build.json** file.
 
@@ -79,8 +79,8 @@ These are the list of grunt tasks for building the project.
 
 Task | Description
 ---|---
-**default** | Does a release build of the game and libraries
-**dev** | Development mode to build the game, this watches source files and auto-rebuilds whenever there's a change
+**default** | Does a release build of the project and libraries
+**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change
 **libs** | Import and rebuild the external dependencies
 **libs-debug** | Import and rebuild the external dependencies including building source maps for better debugging
 **clean-all** | Delete all generated build files and delete components directory
@@ -93,16 +93,16 @@ The **build.json** file contains the list of all required JavaScript and CSS fil
 
 Property | Type | Description
 ---|---|---
-**name** | string | The name of the project or game 
+**name** | string | The name of the project 
 **version** | string | The [semantic versioning](http://semver.org/) number
-**main** | array | The list of files to use to build the game, this can be a mix of JavaScript and CSS/LESS files. Note: the order of the files is how the output is built.
+**main** | array | The list of files to use to build the project, this can be a mix of JavaScript and CSS/LESS files. Note: the order of the files is how the output is built.
 **libraries** | array | The list of external file dependencies imported by Bower. Note: the order of the files is how the output is built.
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
 
 ## Conditional Compiling
 
-The main JavaScript source building supports conditional compiling with global constants. These constants can be use to specify an inline block of code that should be use for development or release builds of the game. The booleans `DEBUG` and `RELEASE` are supported. 
+The main JavaScript source building supports conditional compiling with global constants. These constants can be use to specify an inline block of code that should be use for development or release builds of the project. The booleans `DEBUG` and `RELEASE` are supported. 
 
 ### Example
 
@@ -124,10 +124,10 @@ if (RELEASE)
 Structure | Description
 --- | ---
 **./components/** | The directory which contains all the dependencies from Bower; this directory should be ignored by the versioning system
-**./deploy/** | Contains all the assets needed to play a deployable version of the game
-**./deploy/assets/** | The non-logic assets used by the game, such as images, CSS, JSON
-**./deploy/logic/** | The game logic and required dependency logic
-**./deploy/index.html** | The main HTML file needed to run the game
+**./deploy/** | Contains all the assets needed to play a deployable version of the project
+**./deploy/assets/** | The non-logic assets used by the project, such as images, CSS, JSON
+**./deploy/logic/** | The project logic and required dependency logic
+**./deploy/index.html** | The main HTML file needed to run the project
 **./node_modules/** | The Node plugins required for the build process; this directory should be ignored by the versioning system
 **./src/** | The source JavaScript or CSS/LESS files needed to build the project
 **./bower.json** | The list of Bower dependencies
@@ -137,12 +137,12 @@ Structure | Description
 
 ## Plugin Options
 
-The Grunt Game Builder plugin can acception additional options. Here's an example to add additional arguments:
+The Grunt Project Builder plugin can acception additional options. Here's an example to add additional arguments:
 
 ```js
 module.exports = function(grunt)
 {
-	require('grunt-game-builder')(grunt, {
+	require('grunt-project-builder')(grunt, {
 		jsFolder : "deploy/js",
 		cssFolder : "deploy/css"
 	});
@@ -171,23 +171,25 @@ A _string_ defaults to "deploy/assets/css". The base output folder for CSS files
 
 ## Extending Gruntfile.js
 
-The default **Gruntfile.js** can be extended easily to allow for custom tasks. Here's an example using [grunt-extend-config](https://www.npmjs.org/package/grunt-extend-config) to extend the `initConfig` in this plugin. 
+The default **Gruntfile.js** can be extended easily to allow for custom tasks. 
 
 ```js
 module.exports = function(grunt)
 {
-	// Default game builds
-	require('grunt-game-builder')(grunt);
+	// Include the project builder but don't init right away
+	var config = require('grunt-project-builder')(grunt, {
+		autoInit: false
+	});
 
-	// Include required tasks, should be installed
-	grunt.loadNpmTasks('grunt-extend-config');
+	// Include additions tasks
 	grunt.loadNpmTasks('grunt-exec');
 
-	// Add additional tasks
-	grunt.extendConfig({
-		exec : {
-			echo_something: 'echo "This is something"'
-		}
-	});
+	// Add tasks to the config
+	config.exec = {
+		echo_something: 'echo "This is something"'
+	};
+	
+	// Initialize the config
+	grunt.initConfig(config);
 };
 ```
