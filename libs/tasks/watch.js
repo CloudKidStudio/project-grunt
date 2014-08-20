@@ -12,7 +12,7 @@ module.exports = {
 		],
 		tasks: [
 			'jshint', 
-			'uglify:development'
+			'newer:uglify:development'
 		]
 	},
 	css: {
@@ -21,17 +21,7 @@ module.exports = {
 			'<%= build.file %>'
 		],
 		tasks: [
-			'less:development'
-		]
-	},
-	libraries: {
-		files: [
-			'<%= build.js.librariesDebug %>',
-			'<%= build.file %>'
-		],
-		tasks: [
-			'uglify:libraries-debug', 
-			'less:libraries-debug'
+			'newer:less:development'
 		]
 	}
 };
