@@ -16,7 +16,7 @@ module.exports = function(grunt, options)
 	process.chdir(path.dirname(__dirname));
 	
 	// Separate grunt config files
-	require('load-grunt-config')(grunt, {
+	var config = require('load-grunt-config')(grunt, {
 		
 		// Path to tasks
 		configPath: path.join(__dirname, 'tasks'),
@@ -48,4 +48,6 @@ module.exports = function(grunt, options)
 		}
 	});
 	process.chdir(cwd);
+
+	return config;
 };
