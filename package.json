@@ -1,6 +1,6 @@
 {
 	"name": "grunt-game-builder",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "Tasks and scaffolding for an HTML project",
 	"main": "./libs/index.js",
 	"author": {
@@ -26,7 +26,6 @@
 		"grunt-bower-task": "~0.4.0",
 		"grunt-spock-helper": "~0.0.2",
 		"load-grunt-config": "~0.13.0",
-		"grunt-newer": "~0.7.0",
 		"prompt": "~0.2.13"
 	},
 	"keywords": [

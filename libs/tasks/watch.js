@@ -12,7 +12,7 @@ module.exports = {
 		],
 		tasks: [
 			'jshint', 
-			'newer:uglify:development'
+			'uglify:development'
 		]
 	},
 	css: {
@@ -21,7 +21,7 @@ module.exports = {
 			'<%= build.file %>'
 		],
 		tasks: [
-			'newer:less:development'
+			'less:development'
 		]
 	}
 };
