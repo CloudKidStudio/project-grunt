@@ -20,6 +20,14 @@ module.exports = function(grunt)
 	);
 
 	grunt.registerTask(
+		'combine',
+		'Build the main project in combined, uncompressed mode',[
+			'concat:main', 
+			'replace:main'
+		]
+	);
+
+	grunt.registerTask(
 		'clean-all',
 		'Remove all build files and bower components',
 		['clean']
@@ -50,6 +58,12 @@ module.exports = function(grunt)
 			'uglify:libraries-debug', 
 			'less:libraries-debug'
 		]
+	);
+
+	grunt.registerTask(
+		'libs-combine',
+		'Combine the debug versions of the libraries with no minifying',
+		['concat:libraries']
 	);
 
 	grunt.registerTask(

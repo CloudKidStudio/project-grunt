@@ -81,8 +81,10 @@ Task | Description
 ---|---
 **default** | Does a release build of the project and libraries
 **dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change
+**combine** | Build the main project in combined, uncompressed mode
 **libs** | Import and rebuild the external dependencies
 **libs-debug** | Import and rebuild the external dependencies including building source maps for better debugging
+**libs-combine** | Combine the debug versions of the libraries with no minifying
 **clean-all** | Delete all generated build files and delete components directory
 **clean-libs** | Delete all downloaded Bower components and library build files
 **sync-version** | Automatically update the _version_ and _name_ fields in **bower.json**
