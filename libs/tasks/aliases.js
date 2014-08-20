@@ -9,7 +9,7 @@ module.exports = function(grunt)
 			'clean:css',
 			'less:release',
 			'libs',
-			'update-bower-file'
+			'sync-version'
 		]
 	);
 
@@ -21,14 +21,16 @@ module.exports = function(grunt)
 
 	grunt.registerTask(
 		'clean-all',
-		'Remove all build files and components',
+		'Remove all build files and bower components',
 		['clean']
 	);
 	
 	grunt.registerTask(
-		'clean-components',
-		'Remove all the bower components',
-		['clean:components']
+		'clean-libs',
+		'Remove all the bower components and library build files', [
+			'clean:libraries',
+			'clean:components'
+		]
 	);
 
 	grunt.registerTask(
@@ -51,8 +53,8 @@ module.exports = function(grunt)
 	);
 
 	grunt.registerTask(
-		'update-bower-file',
-		'Update the bower file with the build version',
+		'sync-version',
+		'Update the bower file verison and name from the build file',
 		function()
 		{	
 			// Get the paths and files

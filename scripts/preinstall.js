@@ -45,8 +45,8 @@ function scaffold(file, content, callback)
 	});
 }
 
-// Only scaffold the project if no build.json file is available
-scaffold("build.json", null, function(file){
+// Only scaffold the project if no Gruntfile is available
+scaffold("Gruntfile.js", null, function(file){
 	
 	// Create the required folders
 	scaffoldDir("src"); 
@@ -56,7 +56,7 @@ scaffold("build.json", null, function(file){
 	scaffoldDir("deploy/logic");
 
 	// Copy the required files
-	scaffold("Gruntfile.js");
+	scaffold("build.json");
 	scaffold("deploy/index.html");
 	scaffold(".bowerrc");
 	scaffold("package.json");
