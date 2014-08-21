@@ -12,5 +12,7 @@
 	"librariesDebug" : [
 		"components/normalize-css/normalize.css",
 		"components/jquery/dist/jquery.js"
+	],
+	"excludeFromHinting": [
 	]
 }

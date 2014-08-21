@@ -65,7 +65,9 @@ module.exports = function(grunt, options)
 			main : _.filter(file.main, isJS),
 
 			// The collection of source files in debug mode
-			mainDebug : _.filter(file.mainDebug || file.main, isJS)
+			mainDebug : _.filter(file.mainDebug || file.main, isJS),
+
+			excludeFromHinting : _.filter(file.excludeFromHinting || "", isJS)
 		},
 
 		css : {
