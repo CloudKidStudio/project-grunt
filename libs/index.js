@@ -2,6 +2,7 @@ module.exports = function(grunt, options)
 {
 	// The root plugin directory
 	var path = require('path'),
+		loader = require('load-grunt-config'),
 		options = options || {};
 
 	// Get the components folder if it's custom
@@ -16,13 +17,19 @@ module.exports = function(grunt, options)
 	process.chdir(path.dirname(__dirname));
 	
 	// Separate grunt config files
-	var config = require('load-grunt-config')(grunt, {
+	var config = loader(grunt, {
 		
 		// Path to tasks
 		configPath: path.join(__dirname, 'tasks'),
 
+		// project specific overrides
+		overridePath: path.join(cwd, 'tasks/overrides'),
+
 		// auto grunt.initConfig()
 		init: typeof options.autoInit !== "undefined" ? options.autoInit : true,
+
+		// Load the grunt tasks
+		loadGruntTasks : { pattern: [ 'grunt-*' ] },
 
 		// Data based into config
 		data: {
