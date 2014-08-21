@@ -44,6 +44,21 @@ module.exports = function(grunt, options)
 	if (!_.isUndefined(file.mainDebug) && !_.isArray(file.mainDebug))
 		grunt.fail.fatal('"mainDebug" must be an array of files in ' + filename);
 
+	// Get the files to exclude
+	var excludes = file.excludeFromHinting;
+	if (!_.isUndefined(excludes))
+	{
+		excludes = _.isString(excludes) ? [excludes] : excludes;
+		
+		if (!_.isArray(excludes))
+			grunt.fail.fatal('"excludeFromHinting" must be an array or string in ' + filename);
+
+		// Add an exclamation point to anything that doesn't have it
+		_.each(excludes, function(value, key, list){
+			list[key] = value[0] !== "!" ? "!"+value : value;
+		});
+	}
+
 	return {
 		// The name of the app
 		name: file.name,
@@ -67,7 +82,7 @@ module.exports = function(grunt, options)
 			// The collection of source files in debug mode
 			mainDebug : _.filter(file.mainDebug || file.main, isJS),
 
-			excludeFromHinting : _.filter(file.excludeFromHinting || "", isJS)
+			excludeFromHinting : _.filter(excludes || "", isJS)
 		},
 
 		css : {

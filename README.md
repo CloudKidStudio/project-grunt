@@ -101,7 +101,7 @@ Property | Type | Description
 **libraries** | array | The list of external file dependencies imported by Bower. Note: the order of the files is how the output is built.
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
-**excludeFromHinting** _(optional)_ | array | A list of files (expressed as a glob pattern) that should not be included in the jshint tasks, but should be uglified
+**excludeFromHinting** _(optional)_ | array,string | A single file or list of files (can be expressed as a glob pattern) that should not be included in the jshint tasks, but should be uglified
 
 ## Conditional Compiling
 
