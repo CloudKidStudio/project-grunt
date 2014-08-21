@@ -176,23 +176,5 @@ A _string_ defaults to "deploy/assets/css". The base output folder for CSS files
 
 The default **Gruntfile.js** can be extended easily to allow for custom tasks. 
 
-```js
-module.exports = function(grunt)
-{
-	// Include the project builder but don't init right away
-	var config = require('grunt-game-builder')(grunt, {
-		autoInit: false
-	});
-
-	// Include additions tasks
-	grunt.loadNpmTasks('grunt-exec');
-
-	// Add tasks to the config
-	config.exec = {
-		echo_something: 'echo "This is something"'
-	};
-	
-	// Initialize the config
-	grunt.initConfig(config);
-};
-```
+* [Simple Extending](https://github.com/CloudKidStudio/grunt-game-builder/wiki/Simple-Extending)
+* [Advanced Extending](https://github.com/CloudKidStudio/grunt-game-builder/wiki/Advanced-Extending)
