@@ -20,7 +20,7 @@ module.exports = function(grunt, options)
 	var config = loader(grunt, {
 		
 		// Path to tasks
-		configPath: path.join(__dirname, 'tasks'),
+		configPath: path.join(path.dirname(__dirname), 'tasks'),
 
 		// project specific overrides
 		overridePath: path.join(cwd, 'tasks/overrides'),
