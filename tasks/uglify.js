@@ -14,7 +14,8 @@ module.exports = {
 	},
 	release: {
 		files: {
-			'<%= jsFolder %>/main.js': '<%= build.js.main %>'
+			'<%= jsFolder %>/main.js': '<%= build.js.main %>',
+			'<%= jsFolder %>/assets.js': '<%= build.js.assets %>'
 		},
 		options: {
 			compress: {
@@ -39,6 +40,16 @@ module.exports = {
 				},
 				dead_code: true
 			},
+			banner: '/*! <%= build.name %> <%= build.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+			sourceMap: true
+		}
+	},
+	assets: {
+		files: {
+			'<%= jsFolder %>/assets.js': '<%= build.js.assets %>'
+		},
+		options: {
+			
 			banner: '/*! <%= build.name %> <%= build.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
 			sourceMap: true
 		}

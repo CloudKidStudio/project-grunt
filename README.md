@@ -102,6 +102,7 @@ Property | Type | Description
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
 **excludeFromHinting** _(optional)_ | array,string | A single file or list of files (can be expressed as a glob pattern) that should not be included in the jshint tasks, but should be uglified
+**assets** _(optional)_ | array | A list of javascript files that should be minified to create an `assets.js` file alongside main and libraries. Traditionally the files in this array will be directly exported from Flash. 
 
 ## Conditional Compiling
 

@@ -44,6 +44,9 @@ module.exports = function(grunt, options)
 	if (!_.isUndefined(file.mainDebug) && !_.isArray(file.mainDebug))
 		grunt.fail.fatal('"mainDebug" must be an array of files in ' + filename);
 
+	if (!_.isUndefined(file.assets) && !_.isArray(file.assets))
+		grunt.fail.fatal('"assets" must be an array of files in ' + filename);
+
 	// Get the files to exclude
 	var excludes = file.excludeFromHinting;
 	if (!_.isUndefined(excludes))
@@ -58,6 +61,8 @@ module.exports = function(grunt, options)
 			list[key] = value[0] !== "!" ? "!"+value : value;
 		});
 	}
+
+	
 
 	return {
 		// The name of the app
@@ -82,7 +87,10 @@ module.exports = function(grunt, options)
 			// The collection of source files in debug mode
 			mainDebug : _.filter(file.mainDebug || file.main, isJS),
 
-			excludeFromHinting : _.filter(excludes || "", isJS)
+			excludeFromHinting : _.filter(excludes || "", isJS),
+
+			//asset files (typically assets exported from flash as javascript)
+			assets: _.filter(file.assets || "", isJS)
 		},
 
 		css : {

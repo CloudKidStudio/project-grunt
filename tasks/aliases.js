@@ -20,6 +20,12 @@ module.exports = function(grunt)
 	);
 
 	grunt.registerTask(
+		'assets',
+		'Minify all asset JS files',
+		['uglify:assets']
+	);
+
+	grunt.registerTask(
 		'combine',
 		'Build the main project in combined, uncompressed mode',[
 			'concat:main', 
