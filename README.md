@@ -81,6 +81,7 @@ Task | Description
 ---|---
 **default** | Does a release build of the project and libraries
 **dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change
+**dev-js** | Development mode which watches JS source files only and auto-rebuilds whenever there's a change
 **combine** | Build the main project in combined, uncompressed mode
 **libs** | Import and rebuild the external dependencies
 **libs-debug** | Import and rebuild the external dependencies including building source maps for better debugging

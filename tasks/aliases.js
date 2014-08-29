@@ -16,7 +16,12 @@ module.exports = function(grunt)
 	grunt.registerTask(
 		'dev',
 		'Development mode to build the project',
-		['watch']
+		['concurrent:dev']
+	);
+	grunt.registerTask(
+		'dev-js',
+		'Development mode to build the project - only watches source javascript',
+		['watch:js']
 	);
 
 	grunt.registerTask(

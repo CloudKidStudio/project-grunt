@@ -11,8 +11,19 @@ module.exports = {
 			'<%= build.file %>'
 		],
 		tasks: [
-			'jshint', 
+			'jshint:js', 
 			'uglify:development'
+		]
+	},
+	jsassets: {
+		files: [
+			'Gruntfile.js',
+			'<%= build.js.assets %>',
+			'<%= build.file %>'
+		],
+		tasks: [
+			'jshint:assets', 
+			'assets'
 		]
 	},
 	css: {
