@@ -142,7 +142,7 @@ Structure | Description
 
 ## Plugin Options
 
-The Grunt Project Builder plugin can acception additional options. Here's an example to add additional arguments:
+The Grunt Project Builder plugin can accept additional options. Here's an example to add additional arguments:
 
 ```js
 module.exports = function(grunt)
