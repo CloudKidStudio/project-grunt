@@ -5,20 +5,18 @@ var base = "../../";
 var fs = require('fs');
 
 /**
-*  Create a directory if it doesn't exist
+*  Create a directory if it doesn't exist. 
+*  We use the synchronous API because async was failing after a certain # of folders
 *  @method scaffoldDir
 *  @param {String} dir The directory path to create
 */
 function scaffoldDir(dir)
 {
-	fs.exists(base + dir, function(exists){
-		if (!exists)
-		{
-			fs.mkdir(base + dir, function(){
-				console.log("  " + dir + " ... added");
-			});
-		}
-	});
+	if (!fs.existsSync(base + dir))
+	{
+		fs.mkdirSync(base + dir);
+		console.log("  " + dir + " ... added");
+	}
 }
 
 /**
@@ -52,6 +50,7 @@ scaffold("Gruntfile.js", null, function(file){
 	scaffoldDir("src"); 
 	scaffoldDir("deploy"); 
 	scaffoldDir("deploy/assets");
+	scaffoldDir("deploy/assets/config");
 	scaffoldDir("deploy/assets/css"); 
 	scaffoldDir("deploy/assets/sound"); 
 	scaffoldDir("deploy/assets/sound/vo"); 
@@ -62,6 +61,7 @@ scaffold("Gruntfile.js", null, function(file){
 	// Copy the required files
 	scaffold("build.json");
 	scaffold("deploy/index.html");
+	scaffold("README.md");
 	scaffold(".bowerrc");
 	scaffold("package.json");
 	scaffold("bower.json");
