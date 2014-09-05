@@ -80,9 +80,10 @@ These are the list of grunt tasks for building the project.
 Task | Description
 ---|---
 **default** | Does a release build of the project and libraries
-**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change
-**dev-js** | Development mode which watches JS source files only and auto-rebuilds whenever there's a change
+**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
+**dev-main** | Development mode which watches source files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
 **combine** | Build the main project in combined, uncompressed mode
+**assets** | Minify all assets JavaScript files
 **libs** | Import and rebuild the external dependencies
 **libs-debug** | Import and rebuild the external dependencies including building source maps for better debugging
 **libs-combine** | Combine the debug versions of the libraries with no minifying
@@ -103,7 +104,7 @@ Property | Type | Description
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
 **excludeFromHinting** _(optional)_ | array,string | A single file or list of files (can be expressed as a glob pattern) that should not be included in the jshint tasks, but should be uglified
-**assets** _(optional)_ | array | A list of javascript files that should be minified to create an `assets.js` file alongside main and libraries. Traditionally the files in this array will be directly exported from Flash. 
+**assets** _(optional)_ | array | A list of JavaScript files that should be minified to create an `assets.js` file alongside main and libraries. The common use case for this list is to minify large EaselJS assets exported from Flash to increase the **dev** task build time.
 
 ## Conditional Compiling
 
@@ -131,6 +132,10 @@ Structure | Description
 **./components/** | The directory which contains all the dependencies from Bower; this directory should be ignored by the versioning system
 **./deploy/** | Contains all the assets needed to play a deployable version of the project
 **./deploy/assets/** | The non-logic assets used by the project, such as images, CSS, JSON
+**./deploy/assets/config/** | The directory for project JSON configuration files
+**./deploy/assets/sound/vo/** | The direcotry which contains voice-over audio files
+**./deploy/assets/sound/music/** | The directory which contains music audio files
+**./deploy/assets/sound/sfx/** | The directory which contains sound effect audio files
 **./deploy/logic/** | The project logic and required dependency logic
 **./deploy/index.html** | The main HTML file needed to run the project
 **./node_modules/** | The Node plugins required for the build process; this directory should be ignored by the versioning system
@@ -139,6 +144,7 @@ Structure | Description
 **./build.json** | See above, the list of source files and libraries to build
 **./Gruntfile.js** | Contains the Grunt automation tasks
 **./package.json** | The list of Node dependencies
+**./README.md** | The readme markdown file describing the project
 
 ## Plugin Options
 

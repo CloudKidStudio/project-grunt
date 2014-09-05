@@ -15,7 +15,7 @@ module.exports = {
 			'uglify:development'
 		]
 	},
-	jsassets: {
+	assets: {
 		files: [
 			'Gruntfile.js',
 			'<%= build.js.assets %>',
@@ -23,7 +23,7 @@ module.exports = {
 		],
 		tasks: [
 			'jshint:assets', 
-			'assets'
+			'uglify:assets'
 		]
 	},
 	css: {

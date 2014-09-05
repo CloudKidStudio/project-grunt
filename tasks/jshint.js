@@ -1,13 +1,10 @@
 module.exports = {
-
-	js:
-	[
+	js: [
 		'Gruntfile.js',
 		'<%= build.js.main %>',
 		'<%= build.js.excludeFromHinting %>'
 	],
-	assets:
-	[
+	assets: [
 		'<%= build.js.assets %>',
 		'<%= build.js.excludeFromHinting %>'
 	]

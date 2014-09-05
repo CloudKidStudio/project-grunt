@@ -1,13 +1,12 @@
 module.exports = {
-	options:
-	{
+	options: {
 		logConcurrentOutput: true
 	},
 	dev: {
 		tasks: [
 			"watch:js",
 			"watch:css",
-			"watch:jsassets"
+			"watch:assets"
 		]
 	}
 };
