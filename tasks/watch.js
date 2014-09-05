@@ -22,7 +22,6 @@ module.exports = {
 			'<%= build.file %>'
 		],
 		tasks: [
-			'jshint:assets', 
 			'uglify:assets'
 		]
 	},

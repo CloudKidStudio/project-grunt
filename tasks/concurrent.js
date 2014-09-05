@@ -8,5 +8,11 @@ module.exports = {
 			"watch:css",
 			"watch:assets"
 		]
+	},
+	"dev-main": {
+		tasks: [
+			"watch:js",
+			"watch:css"
+		]
 	}
 };
