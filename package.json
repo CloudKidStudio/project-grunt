@@ -1,6 +1,6 @@
 {
   "name": "grunt-game-builder",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Tasks and scaffolding for an HTML project",
   "main": "./libs/index.js",
   "author": {
@@ -39,29 +39,9 @@
     "scaffolding",
     "build"
   ],
+  "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/CloudKidStudio/grunt-game-builder/issues"
   },
-  "homepage": "https://github.com/CloudKidStudio/grunt-game-builder",
-  "_id": "grunt-game-builder@0.1.9",
-  "dist": {
-    "shasum": "9afcd2edb3e476b9998b87b910c90e6d910e7611",
-    "tarball": "http://registry.npmjs.org/grunt-game-builder/-/grunt-game-builder-0.1.9.tgz"
-  },
-  "_from": "grunt-game-builder@*",
-  "_npmVersion": "1.3.24",
-  "_npmUser": {
-    "name": "cloudkid",
-    "email": "tools@cloudkid.com"
-  },
-  "maintainers": [
-    {
-      "name": "cloudkid",
-      "email": "tools@cloudkid.com"
-    }
-  ],
-  "directories": {},
-  "_shasum": "9afcd2edb3e476b9998b87b910c90e6d910e7611",
-  "_resolved": "https://registry.npmjs.org/grunt-game-builder/-/grunt-game-builder-0.1.9.tgz",
-  "readme": "ERROR: No README data found!"
+  "homepage": "https://github.com/CloudKidStudio/grunt-game-builder"
 }
