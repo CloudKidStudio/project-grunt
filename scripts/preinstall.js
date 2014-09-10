@@ -50,12 +50,7 @@ scaffold("Gruntfile.js", null, function(file){
 	scaffoldDir("src"); 
 	scaffoldDir("deploy"); 
 	scaffoldDir("deploy/assets");
-	scaffoldDir("deploy/assets/config");
 	scaffoldDir("deploy/assets/css"); 
-	scaffoldDir("deploy/assets/sound"); 
-	scaffoldDir("deploy/assets/sound/vo"); 
-	scaffoldDir("deploy/assets/sound/sfx"); 
-	scaffoldDir("deploy/assets/sound/music"); 
 	scaffoldDir("deploy/logic");
 
 	// Copy the required files
