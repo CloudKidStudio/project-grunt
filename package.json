@@ -1,6 +1,6 @@
 {
   "name": "grunt-game-builder",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Tasks and scaffolding for an HTML project",
   "main": "./libs/index.js",
   "author": {
@@ -19,7 +19,6 @@
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-bower-task": "~0.4.0",
-    "grunt-concurrent": "^0.5.0",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.5.0",
     "grunt-contrib-jshint": "~0.10.0",

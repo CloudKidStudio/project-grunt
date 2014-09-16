@@ -81,7 +81,7 @@ Task | Description
 ---|---
 **default** | Does a release build of the project and libraries
 **dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
-**dev-main** | Development mode which watches source files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
+**dev-main** | Development mode which watches source JavaScript files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
 **combine** | Build the main project in combined, uncompressed mode
 **assets** | Minify all assets JavaScript files
 **libs** | Import and rebuild the external dependencies
