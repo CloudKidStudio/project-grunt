@@ -1,6 +1,6 @@
 {
   "name": "grunt-game-builder",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "Tasks and scaffolding for an HTML project",
   "main": "./libs/index.js",
   "author": {
@@ -8,8 +8,8 @@
     "email": "matt@cloudkid.com"
   },
   "scripts": {
-    "preinstall": "./scripts/preinstall.js",
-    "postinstall": "./scripts/postinstall.js"
+    "preinstall": "node scripts/preinstall.js",
+    "postinstall": "node scripts/postinstall.js"
   },
   "license": "MIT",
   "repository": {
