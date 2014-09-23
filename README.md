@@ -28,6 +28,14 @@ The installation of the plugin requires installing Grunt first and then the plug
 npm install grunt grunt-game-builder
 ```
 
+### 3. Developing
+
+To run the project in development mode (watches for any changes in files and re-builds) and launch a web-browser to preview your project, run this:
+
+```shell
+grunt dev & grunt run
+```
+
 ## Adding Dependencies
 
 Grunt Project Builder is designed to easily include external dependencies into your project.
@@ -90,6 +98,7 @@ Task | Description
 **clean-all** | Delete all generated build files and delete components directory
 **clean-libs** | Delete all downloaded Bower components and library build files
 **sync-version** | Automatically update the _version_ and _name_ fields in **bower.json**
+**run** | Preview the deploy index.html file in a web browser by running a NodeJS server
 
 ## Build File
 

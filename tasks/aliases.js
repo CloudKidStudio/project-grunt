@@ -79,6 +79,12 @@ module.exports = function(grunt)
 	);
 
 	grunt.registerTask(
+		'run', 
+		'Preview the game by running a node server and opening it in the web browser',
+		['connect:server']
+	);
+
+	grunt.registerTask(
 		'sync-version',
 		'Update the bower file verison and name from the build file',
 		function()
