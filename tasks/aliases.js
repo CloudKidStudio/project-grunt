@@ -3,12 +3,13 @@ module.exports = function(grunt)
 	grunt.registerTask(
 		'default', 
 		'Default task to build all the project code', [
-			'clean:js',
-			'jshint',
-			'uglify:release',
+			'clean:main',
+			'jshint:main',
+			'uglify:main',
 			'clean:css',
 			'less:release',
 			'libs',
+			'assets',
 			'sync-version'
 		]
 	);
@@ -21,21 +22,21 @@ module.exports = function(grunt)
 
 	grunt.registerTask(
 		'dev-main',
-		'Development mode to build the project - faster, only watches source',
-		['watch:js']
+		'Development mode to build the project - faster, only watches main source (no assets or css)',
+		['watch:main']
+	);
+
+	grunt.registerTask(
+		'assets-debug',
+		'Combine, map all asset JS files uncompressed',
+		['concat_sourcemap:assets']
 	);
 
 	grunt.registerTask(
 		'assets',
-		'Minify all asset JS files',
-		['uglify:assets']
-	);
-
-	grunt.registerTask(
-		'combine',
-		'Build the main project in combined, uncompressed mode',[
-			'concat:main', 
-			'replace:main'
+		'Minify all asset JS files uncompressed', [
+			'clean:assets',
+			'uglify:assets'
 		]
 	);
 
@@ -66,16 +67,27 @@ module.exports = function(grunt)
 	grunt.registerTask(
 		'libs-debug',
 		'Import using Bower and build debug versions of libraries', [
+			'clean:libraries',
 			'bower:install', 
-			'uglify:libraries-debug', 
+			'concat_sourcemap:libraries', 
 			'less:libraries-debug'
 		]
 	);
 
 	grunt.registerTask(
-		'libs-combine',
-		'Combine the debug versions of the libraries with no minifying',
-		['concat:libraries']
+		'qa',
+		'Do QA on the games generate and run', [
+			'clean:main',
+			'jshint:main',
+			'concat_sourcemap:main', 
+			'replace:main',
+			'clean:css',
+			'less:development',
+			'clean:assets',
+			'concat_sourcemap:assets',
+			'libs-debug',
+			'run'
+		]
 	);
 
 	grunt.registerTask(

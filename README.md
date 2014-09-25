@@ -90,14 +90,14 @@ Task | Description
 **default** | Does a release build of the project and libraries
 **dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
 **dev-main** | Development mode which watches source JavaScript files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
-**combine** | Build the main project in combined, uncompressed mode
 **assets** | Minify all assets JavaScript files
+**assets-debug** | Combine all assets JavaScript files with source maps for better debugging
 **libs** | Import and rebuild the external dependencies
-**libs-debug** | Import and rebuild the external dependencies including building source maps for better debugging
-**libs-combine** | Combine the debug versions of the libraries with no minifying
+**libs-debug** | Import and concat the external dependencies including building source maps for better debugging
 **clean-all** | Delete all generated build files and delete components directory
 **clean-libs** | Delete all downloaded Bower components and library build files
 **sync-version** | Automatically update the _version_ and _name_ fields in **bower.json**
+**qa** | Build the project in debug mode and run in the web browser by running a NodeJS server
 **run** | Preview the deploy index.html file in a web browser by running a NodeJS server
 
 ## Build File

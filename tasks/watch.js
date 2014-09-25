@@ -4,15 +4,16 @@ module.exports = {
 		reload: true,
 		atBegin: true
 	},
-	js: {
+	main: {
 		files: [
 			'Gruntfile.js',
 			'<%= build.js.main %>',
 			'<%= build.file %>'
 		],
 		tasks: [
-			'jshint:js', 
-			'uglify:development'
+			'jshint:main', 
+			'concat_sourcemap:main', 
+			'replace:main'
 		]
 	},
 	assets: {
@@ -22,7 +23,7 @@ module.exports = {
 			'<%= build.file %>'
 		],
 		tasks: [
-			'uglify:assets'
+			'concat_sourcemap:assets'
 		]
 	},
 	css: {

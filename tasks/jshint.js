@@ -1,5 +1,5 @@
 module.exports = {
-	js: [
+	main: [
 		'Gruntfile.js',
 		'<%= build.js.main %>'
 	]

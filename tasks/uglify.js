@@ -4,15 +4,7 @@ module.exports = {
 			'<%= jsFolder %>/libraries.js': '<%= build.js.libraries %>'
 		}
 	},
-	"libraries-debug": {
-		files: {
-			'<%= jsFolder %>/libraries.js': '<%= build.js.librariesDebug %>'
-		},
-		options: {
-			sourceMap:true
-		}
-	},
-	release: {
+	main: {
 		files: {
 			'<%= jsFolder %>/main.js': '<%= build.js.main %>',
 			'<%= jsFolder %>/assets.js': '<%= build.js.assets %>'
@@ -28,30 +20,9 @@ module.exports = {
 			}
 		}
 	},
-	development: {
-		files: {
-			'<%= jsFolder %>/main.js': '<%= build.js.mainDebug %>'
-		},
-		options: {
-			compress: {
-				global_defs: {
-					"DEBUG": true,
-					"RELEASE": false
-				},
-				dead_code: true
-			},
-			banner: '/*! <%= build.name %> <%= build.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-			sourceMap: true
-		}
-	},
 	assets: {
 		files: {
 			'<%= jsFolder %>/assets.js': '<%= build.js.assets %>'
-		},
-		options: {
-			
-			banner: '/*! <%= build.name %> <%= build.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-			sourceMap: true
 		}
 	}
 };

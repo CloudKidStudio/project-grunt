@@ -1,5 +1,5 @@
 module.exports = {
-	js: [
+	main: [
 		'<%= jsFolder %>/main.js.map',
 		'<%= jsFolder %>/main.js'
 	],
@@ -12,6 +12,10 @@ module.exports = {
 		'<%= cssFolder %>/libraries.css.map',
 		'<%= jsFolder %>/libraries.js.map',
 		'<%= jsFolder %>/libraries.js'
+	],
+	assets: [
+		'<%= jsFolder %>/assets.js.map',
+		'<%= jsFolder %>/assets.js'
 	],
 	components: ['<%= components %>']
 };
