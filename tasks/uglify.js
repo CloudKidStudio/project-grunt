@@ -6,8 +6,7 @@ module.exports = {
 	},
 	main: {
 		files: {
-			'<%= jsFolder %>/main.js': '<%= build.js.main %>',
-			'<%= jsFolder %>/assets.js': '<%= build.js.assets %>'
+			'<%= jsFolder %>/main.js': '<%= build.js.main %>'
 		},
 		options: {
 			compress: {

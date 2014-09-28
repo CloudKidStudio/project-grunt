@@ -1,8 +1,11 @@
 module.exports = function(grunt)
 {
+	var hasAssets = grunt.config.get('hasAssets');
+
 	grunt.registerTask(
 		'default', 
-		'Default task to build all the project code', [
+		'Default task to build all the project code', 
+		hasAssets ? [
 			'clean:main',
 			'jshint:main',
 			'uglify:main',
@@ -11,12 +14,20 @@ module.exports = function(grunt)
 			'libs',
 			'assets',
 			'sync-version'
+		] : [
+			'clean:main',
+			'jshint:main',
+			'uglify:main',
+			'clean:css',
+			'less:release',
+			'libs',
+			'sync-version'
 		]
 	);
 
 	grunt.registerTask(
 		'dev',
-		'Development mode to build the project main, assets and css',
+		'Development mode to build the project main, css and assets',
 		['watch']
 	);
 
@@ -26,19 +37,23 @@ module.exports = function(grunt)
 		['watch:main']
 	);
 
-	grunt.registerTask(
-		'assets-debug',
-		'Combine, map all asset JS files uncompressed',
-		['concat_sourcemap:assets']
-	);
+	// Only register the asset tasks if we have assets
+	if (hasAssets)
+	{
+		grunt.registerTask(
+			'assets-debug',
+			'Combine, map all asset JS files uncompressed',
+			['concat_sourcemap:assets']
+		);
 
-	grunt.registerTask(
-		'assets',
-		'Minify all asset JS files uncompressed', [
-			'clean:assets',
-			'uglify:assets'
-		]
-	);
+		grunt.registerTask(
+			'assets',
+			'Minify all asset JS files uncompressed', [
+				'clean:assets',
+				'uglify:assets'
+			]
+		);
+	}
 
 	grunt.registerTask(
 		'clean-all',
@@ -76,15 +91,25 @@ module.exports = function(grunt)
 
 	grunt.registerTask(
 		'qa',
-		'Do QA on the games generate and run', [
+		'Do QA on the games generate and run', 
+		hasAssets ? [
 			'clean:main',
 			'jshint:main',
 			'concat_sourcemap:main', 
 			'replace:main',
 			'clean:css',
 			'less:development',
-			'clean:assets',
-			'concat_sourcemap:assets',
+			'libs-debug',
+			'clean:assets', 
+			'assets-debug',
+			'run'
+		] : [
+			'clean:main',
+			'jshint:main',
+			'concat_sourcemap:main', 
+			'replace:main',
+			'clean:css',
+			'less:development',
 			'libs-debug',
 			'run'
 		]

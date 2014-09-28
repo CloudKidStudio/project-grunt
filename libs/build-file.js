@@ -45,7 +45,10 @@ module.exports = function(grunt, options)
 		grunt.fail.fatal('"mainDebug" must be an array of files in ' + filename);
 
 	if (!_.isUndefined(file.assets) && !_.isArray(file.assets))
-		grunt.fail.fatal('"assets" must be an array of files in ' + filename);	
+		grunt.fail.fatal('"assets" must be an array of files in ' + filename);
+
+	// Let other tasks know if we have assets
+	grunt.config.set('hasAssets', !_.isUndefined(file.assets));
 
 	return {
 		// The name of the app

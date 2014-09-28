@@ -1,4 +1,4 @@
-module.exports = function(grunt, options)
+module.exports = function(grunt, options, undefined)
 {
 	// The root plugin directory
 	var path = require('path'),
@@ -16,6 +16,9 @@ module.exports = function(grunt, options)
 	var cwd = process.cwd();
 	process.chdir(path.dirname(__dirname));
 	
+	// If we should called initConfig right away
+	var autoInit = options.autoInit !== undefined ? !!options.autoInit : true;
+
 	// Separate grunt config files
 	var config = loader(grunt, {
 		
@@ -26,7 +29,7 @@ module.exports = function(grunt, options)
 		overridePath: path.join(cwd, 'tasks/overrides'),
 
 		// auto grunt.initConfig()
-		init: typeof options.autoInit !== "undefined" ? options.autoInit : true,
+		init: false,
 
 		// Load the grunt tasks
 		loadGruntTasks : { pattern: [ 'grunt-*' ] },
@@ -55,6 +58,21 @@ module.exports = function(grunt, options)
 		}
 	});
 	process.chdir(cwd);
+
+	// If we don't have assets, remove from the tasks
+	// this is determined by build-file.js
+	if (!grunt.config.get('hasAssets'))
+	{
+		delete config.watch.assets;
+		delete config.uglify.assets;
+		delete config.clean.assets;
+		delete config.concat_sourcemap.assets;
+	}
+
+	if (autoInit)
+	{
+		grunt.initConfig(config);
+	}
 
 	return config;
 };
