@@ -50,7 +50,7 @@ module.exports = function(grunt, options, undefined)
 			components: components,
 
 			// The output folders
-			jsFolder: options.jsFolder || '<%= distFolder %>/logic',
+			jsFolder: options.jsFolder || '<%= distFolder %>/assets/js',
 			cssFolder: options.cssFolder || '<%= distFolder %>/assets/css',
 
 			// Save the current working directory

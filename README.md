@@ -139,12 +139,9 @@ Structure | Description
 --- | ---
 **./components/** | The directory which contains all the dependencies from Bower; this directory should be ignored by the versioning system
 **./deploy/** | Contains all the assets needed to play a deployable version of the project
-**./deploy/assets/** | The non-logic assets used by the project, such as images, CSS, JSON
-**./deploy/assets/config/** | The directory for project JSON configuration files
-**./deploy/assets/sound/vo/** | The direcotry which contains voice-over audio files
-**./deploy/assets/sound/music/** | The directory which contains music audio files
-**./deploy/assets/sound/sfx/** | The directory which contains sound effect audio files
-**./deploy/logic/** | The project logic and required dependency logic
+**./deploy/assets/** | The assets used by the project, such as images, CSS, JSON
+**./deploy/assets/js** | The project logic and required dependency logic
+**./deploy/assets/csss** | The project built CSS
 **./deploy/index.html** | The main HTML file needed to run the project
 **./node_modules/** | The Node plugins required for the build process; this directory should be ignored by the versioning system
 **./src/** | The source JavaScript or CSS/LESS files needed to build the project
@@ -182,7 +179,7 @@ A _string_ defaults to "deploy". The base output folder where to save the compil
 
 ### options.jsFolder
 
-A _string_ defaults to "deploy/logic". The base output folder for JavaScript files (libraries.js and main.js).
+A _string_ defaults to "deploy/assets/js". The base output folder for JavaScript files (libraries.js and main.js).
 
 ### options.cssFolder
 
