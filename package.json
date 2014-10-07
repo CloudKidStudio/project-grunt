@@ -1,6 +1,6 @@
 {
   "name": "grunt-game-builder",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Tasks and scaffolding for an HTML project",
   "main": "./libs/index.js",
   "author": {
