@@ -1,54 +1,84 @@
-module.exports = function(grunt)
-{
+module.exports = function(grunt) {
 	var hasAssets = grunt.config.get('hasAssets');
 
 	grunt.registerTask(
-		'default', 
-		'Default task to build all the project code', 
-		hasAssets ? [
-			'clean:main',
-			'jshint:main',
-			'uglify:main',
-			'clean:css',
-			'less:release',
-			'libs',
-			'assets',
-			'sync-version'
-		] : [
-			'clean:main',
-			'jshint:main',
-			'uglify:main',
-			'clean:css',
-			'less:release',
-			'libs',
-			'sync-version'
-		]
+		'default',
+		'Default task to build all the project code in release mode', ['build']
 	);
+
+	grunt.registerTask('build', 'compile all elements (pass :dev for dev mode)', function(n) {
+		//console.log(n);
+		if (n == 'dev') {
+			//dev mode
+			grunt.task.run(
+				hasAssets ? [
+					'clean:main',
+					'jshint:main',
+					'concat_sourcemap:main',
+					'replace:main',
+					'clean:css',
+					'less:development',
+					'libs-debug',
+					'clean:assets',
+					'assets-debug',
+				] : [
+					'clean:main',
+					'jshint:main',
+					'concat_sourcemap:main',
+					'replace:main',
+					'clean:css',
+					'less:development',
+					'libs-debug',
+				]
+			);
+		}
+		else {
+			//release mode
+			grunt.task.run(hasAssets ? [
+				'clean:main',
+				'jshint:main',
+				'uglify:main',
+				'clean:css',
+				'less:release',
+				'libs',
+				'assets',
+				'sync-version'
+			] : [
+				'clean:main',
+				'jshint:main',
+				'uglify:main',
+				'clean:css',
+				'less:release',
+				'libs',
+				'sync-version'
+			]);
+		}
+	});
 
 	grunt.registerTask(
 		'dev',
-		'Development mode to build the project main, css and assets',
-		['watch']
+		'Development mode to build the project main, css and assets', 
+    ['watch']
 	);
 
 	grunt.registerTask(
 		'dev-main',
-		'Development mode to build the project - faster, only watches main source (no assets or css)',
-		['watch:main']
+		'Development mode to build the project - faster, only watches main source (no assets or css)', 
+    ['watch:main']
 	);
 
 	// Only register the asset tasks if we have assets
-	if (hasAssets)
-	{
+	if (hasAssets) {
 		grunt.registerTask(
 			'assets-debug',
-			'Combine, map all asset JS files uncompressed',
-			['concat_sourcemap:assets']
+			'Combine, map all asset JS files uncompressed', 
+      ['concat_sourcemap:assets']
 		);
 
 		grunt.registerTask(
 			'assets',
-			'Minify all asset JS files uncompressed', [
+			'Minify all asset JS files uncompressed', 
+      [
 				'clean:assets',
 				'uglify:assets'
 			]
@@ -57,34 +87,37 @@ module.exports = function(grunt)
 
 	grunt.registerTask(
 		'clean-all',
-		'Remove all build files and bower components',
-		['clean']
+		'Remove all build files and bower components', 
+    ['clean']
 	);
-	
+
 	grunt.registerTask(
 		'clean-libs',
-		'Remove all the bower components and library build files', [
+		'Remove all the bower components and library build files', 
+    [
 			'clean:libraries',
 			'clean:components'
 		]
 	);
 
 	grunt.registerTask(
-		'libs', 
-		'Import external client-side dependencies using Bower', [
+		'libs',
+		'Import external client-side dependencies using Bower', 
+    [
 			'clean:libraries',
-			'bower:install', 
-			'uglify:libraries', 
+			'bower:install',
+			'uglify:libraries',
 			'less:libraries'
 		]
 	);
 
 	grunt.registerTask(
 		'libs-debug',
-		'Import using Bower and build debug versions of libraries', [
+		'Import using Bower and build debug versions of libraries', 
+    [
 			'clean:libraries',
-			'bower:install', 
-			'concat_sourcemap:libraries', 
+			'bower:install',
+			'concat_sourcemap:libraries',
 			'less:libraries-debug'
 		]
 	);
@@ -92,40 +125,22 @@ module.exports = function(grunt)
 	grunt.registerTask(
 		'qa',
 		'Do QA on the games generate and run', 
-		hasAssets ? [
-			'clean:main',
-			'jshint:main',
-			'concat_sourcemap:main', 
-			'replace:main',
-			'clean:css',
-			'less:development',
-			'libs-debug',
-			'clean:assets', 
-			'assets-debug',
-			'run'
-		] : [
-			'clean:main',
-			'jshint:main',
-			'concat_sourcemap:main', 
-			'replace:main',
-			'clean:css',
-			'less:development',
-			'libs-debug',
+    [
+      'build:dev',
 			'run'
 		]
 	);
 
 	grunt.registerTask(
-		'run', 
-		'Preview the game by running a node server and opening it in the web browser',
-		['connect:server']
+		'run',
+		'Preview the game by running a node server and opening it in the web browser', 
+    ['connect:server']
 	);
 
 	grunt.registerTask(
 		'sync-version',
-		'Update the bower file verison and name from the build file',
-		function()
-		{	
+		'Update the bower file version and name from the build file',
+		function() {
 			// Get the paths and files
 			var bowerPath = process.cwd() + '/bower.json',
 				bower = grunt.file.readJSON(bowerPath),
