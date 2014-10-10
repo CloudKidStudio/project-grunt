@@ -55,7 +55,7 @@ module.exports = function(grunt, options)
 		name: file.name,
 
 		// The semantic version of the app
-		version: file.name,
+		version: file.version,
 
 		// The name of the build file
 		file : filename,

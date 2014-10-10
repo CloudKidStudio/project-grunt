@@ -12,7 +12,8 @@ module.exports = {
 			compress: {
 				global_defs: {
 					"DEBUG": false,
-					"RELEASE": true
+					"RELEASE": true,
+					"VERSION": "<%= build.version %>"
 				},
 				dead_code: true,
 				drop_console: true

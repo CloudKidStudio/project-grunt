@@ -51,7 +51,7 @@ scaffold("Gruntfile.js", null, function(file){
 	scaffoldDir("deploy"); 
 	scaffoldDir("deploy/assets");
 	scaffoldDir("deploy/assets/css"); 
-	scaffoldDir("deploy/logic");
+	scaffoldDir("deploy/assets/js");
 
 	// Copy the required files
 	scaffold("build.json");

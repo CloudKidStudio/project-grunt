@@ -8,6 +8,9 @@ module.exports = {
 		},{
 			from: /\bRELEASE\b/g,
 			to: "false"
+		},{ 
+			from: "VERSION", 
+			to: "\"<%= build.version %>\""
 		}]
 	}
 };
