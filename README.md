@@ -143,7 +143,7 @@ Structure | Description
 **./deploy/** | Contains all the assets needed to play a deployable version of the project
 **./deploy/assets/** | The assets used by the project, such as images, CSS, JSON
 **./deploy/assets/js** | The project logic and required dependency logic
-**./deploy/assets/csss** | The project built CSS
+**./deploy/assets/css** | The project built CSS
 **./deploy/index.html** | The main HTML file needed to run the project
 **./node_modules/** | The Node plugins required for the build process; this directory should be ignored by the versioning system
 **./src/** | The source JavaScript or CSS/LESS files needed to build the project
