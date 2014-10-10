@@ -1,6 +1,6 @@
 # Grunt Project Builder
 
-Grunt Project Builder is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build. 
+Grunt Project Builder is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build.
 
 ## Requirements
 
@@ -79,7 +79,7 @@ Then, update **build.json** to list the files you'd like to include from the lib
 }
 ```
 
-After adding these libraries, run `grunt libs` from the commandline to import new libraries into your project. 
+After adding these libraries, run `grunt libs` from the commandline to import new libraries into your project.
 
 ## Grunt Tasks
 
@@ -99,6 +99,7 @@ Task | Description
 **sync-version** | Automatically update the _version_ and _name_ fields in **bower.json**
 **qa** | Build the project in debug mode and run in the web browser by running a NodeJS server
 **run** | Preview the deploy index.html file in a web browser by running a NodeJS server
+**build** | Compile a full build of the project and libraries. With no arguments, performs a release build. Calling it as build:dev, performs a debug build
 
 ## Build File
 
@@ -106,7 +107,7 @@ The **build.json** file contains the list of all required JavaScript and CSS fil
 
 Property | Type | Description
 ---|---|---
-**name** | string | The name of the project 
+**name** | string | The name of the project
 **version** | string | The [semantic versioning](http://semver.org/) number
 **main** | array | The list of files to use to build the project, this can be a mix of JavaScript and CSS/LESS files. Note: the order of the files is how the output is built.
 **libraries** | array | The list of external file dependencies imported by Bower. Note: the order of the files is how the output is built.
@@ -116,7 +117,7 @@ Property | Type | Description
 
 ## Conditional Compiling
 
-The main JavaScript source building supports conditional compiling with global constants. These constants can be use to specify an inline block of code that should be use for development or release builds of the project. The booleans `DEBUG` and `RELEASE` are supported. 
+The main JavaScript source building supports conditional compiling with global constants. These constants can be use to specify an inline block of code that should be use for development or release builds of the project. The booleans `DEBUG` and `RELEASE` are supported.
 
 ### Example
 
@@ -167,7 +168,7 @@ module.exports = function(grunt)
 
 ### options.autoInit
 
-A _boolean_ defaults to true. If grunt.initConfig() is automatically called. 
+A _boolean_ defaults to true. If grunt.initConfig() is automatically called.
 
 ### options.buildFile
 
@@ -187,7 +188,7 @@ A _string_ defaults to "deploy/assets/css". The base output folder for CSS files
 
 ## Extending Gruntfile.js
 
-The default **Gruntfile.js** can be extended easily to allow for custom tasks. 
+The default **Gruntfile.js** can be extended easily to allow for custom tasks.
 
 * [Simple Extending](https://github.com/CloudKidStudio/grunt-game-builder/wiki/Simple-Extending)
 * [Advanced Extending](https://github.com/CloudKidStudio/grunt-game-builder/wiki/Advanced-Extending)
