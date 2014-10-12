@@ -17,10 +17,10 @@ module.exports = {
 		src: '<%= distFolder %>/*.html',
 		overwrite: true,
 		replacements: [{
-			from: /src\=(\"|\')([^\?\n\r]+)(\?v\=[a-z0-9\.]*)?(\"|\')/ig,
+			from: /src\=(\"|\')([^\?\n\r\"\']+)(\?v\=[a-z0-9\.]*)?(\"|\')/ig,
 			to: 'src="$2?v=<%= build.version %>"'
 		},{
-			from: /href\=(\"|\')([^\?\n\r]+\.css)(\?v\=[a-z0-9\.]*)?(\"|\')/ig,
+			from: /href\=(\"|\')([^\?\n\r\"\']+\.css)(\?v\=[a-z0-9\.]*)?(\"|\')/ig,
 			to: 'href="$2?v=<%= build.version %>"'
 		}]
 	}
