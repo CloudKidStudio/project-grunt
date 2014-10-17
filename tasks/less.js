@@ -4,7 +4,8 @@ module.exports = {
 			'<%= cssFolder %>/libraries.css': '<%= build.css.libraries %>',
 		},
 		options: {
-			compress: true
+			compress: true,
+			cleancss: true
 		}
 	},
 	"libraries-debug": {
@@ -12,7 +13,6 @@ module.exports = {
 			'<%= cssFolder %>/libraries.css': '<%= build.css.librariesDebug %>',
 		},
 		options: {
-			compress: true,
 			sourceMap: true,
 			sourceMapFilename: '<%= cssFolder %>/libraries.css.map',
 			sourceMapURL: 'libraries.css.map',
@@ -24,7 +24,8 @@ module.exports = {
 			'<%= cssFolder %>/main.css': '<%= build.css.main %>',
 		},
 		options: {
-			compress: true
+			compress: true,
+			cleancss: true
 		}
 	},
 	development: {
@@ -32,7 +33,6 @@ module.exports = {
 			'<%= cssFolder %>/main.css': '<%= build.css.mainDebug %>',
 		},
 		options: {
-			compress: true,
 			sourceMap: true,
 			sourceMapFilename: '<%= cssFolder %>/main.css.map',
 			sourceMapURL: 'main.css.map',
