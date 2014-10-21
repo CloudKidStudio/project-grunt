@@ -96,7 +96,6 @@ Task | Description
 **libs-debug** | Import and concat the external dependencies including building source maps for better debugging
 **clean-all** | Delete all generated build files and delete components directory
 **clean-libs** | Delete all downloaded Bower components and library build files
-**sync-version** | Automatically update the _version_ and _name_ fields in **bower.json**
 **qa** | Build the project in debug mode and run in the web browser by running a NodeJS server
 **run** | Preview the deploy index.html file in a web browser by running a NodeJS server
 **build** | Compile a full build of the project and libraries. With no arguments, performs a release build. Calling it as **build:dev**, performs a debug build

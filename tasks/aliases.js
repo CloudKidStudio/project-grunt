@@ -46,78 +46,16 @@ module.exports = function(grunt)
 					'clean:css',
 					'less:release',
 					'libs',
-					'assets',
-					'sync-version',
-					'replace:html'
+					'assets'
 				] : [
 					'clean:main',
 					'jshint:main',
 					'uglify:main',
 					'clean:css',
 					'less:release',
-					'libs',
-					'sync-version',
-					'replace:html'
+					'libs'
 				]);
 			}
-		}
-	);
-
-	grunt.registerTask(
-		'version',
-		'Change the current project version',
-		function(n)
-		{
-			if (!n)
-			{
-				grunt.fail.fatal("Attempting to change the version number, needs " + 
-					"to be the semantic versioning number (e.g. 1.0.0) or either " +
-					"major, minor or patch.");
-			}
-
-			var path = require('path');
-			var semver = require('semver');
-
-			// Valid types of preleases
-			var types = ['major', 'minor', 'patch'];
-
-			var buildPath = path.join(process.cwd(), 'build.json');
-			var build = grunt.file.readJSON(buildPath);
-			var version;
-
-			// For semver format, replace the version
-			if (semver.valid(n))
-			{
-				if (n == build.version)
-				{
-					grunt.fail.fatal("Supplied version the same as the current version");
-				}
-				version = n;
-			}
-			else if (types.indexOf(n) > -1)
-			{
-				version = semver.inc(build.version, n);
-			}
-			else
-			{
-				grunt.fail.fatal("Argument on version task is not valid");
-			}
-
-			if (!semver.lt(build.version, version))
-			{
-				grunt.fail.warn("Attempting to revert to a lesser version (from "
-				 + build.version + " to " + version + ")");
-			}
-
-			grunt.log.ok("Version updated to " + version);
-
-			build.version = version;
-
-			// Update the build file
-			grunt.file.write(buildPath, JSON.stringify(build, null, "\t"));
-
-			// Update bower version number
-			grunt.task.run('sync-version');
 		}
 	);
 
@@ -197,25 +135,5 @@ module.exports = function(grunt)
 		'run',
 		'Preview the game by running a node server and opening it in the web browser', 
 		['connect:server']
-	);
-
-	grunt.registerTask(
-		'sync-version',
-		'Update the bower file version and name from the build file',
-		function()
-		{
-			// Get the paths and files
-			var path = require('path');
-			var bowerPath = path.join(process.cwd(), 'bower.json'),
-			bower = grunt.file.readJSON(bowerPath),
-			build = grunt.file.readJSON(path.join(process.cwd(), 'build.json'));
-
-			// Update the bower version
-			bower.version = build.version;
-			bower.name = build.name;
-
-			// Write the bower file
-			grunt.file.write(bowerPath, JSON.stringify(bower, null, "\t"));
-		}
 	);
 };
