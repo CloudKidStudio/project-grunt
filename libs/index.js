@@ -15,7 +15,10 @@ module.exports = function(grunt, options, undefined)
 	// We need to load the local grunt plugins
 	var cwd = process.cwd();
 	process.chdir(path.dirname(__dirname));
-	
+
+	// Add the version task
+	require(path.join(__dirname, 'version.js'))(grunt);
+
 	// If we should called initConfig right away
 	var autoInit = options.autoInit !== undefined ? !!options.autoInit : true;
 
@@ -38,7 +41,7 @@ module.exports = function(grunt, options, undefined)
 		data: {
 
 			// The name of the library from the build file
-			build: require(__dirname + '/build-file.js')(grunt, { 
+			build: require(path.join(__dirname, 'build-file.js'))(grunt, { 
 				cwd: cwd, 
 				buildFile : options.buildFile 
 			}),
