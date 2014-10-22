@@ -1,5 +1,7 @@
 # Grunt Project Builder
 
+[![Dependency Status](https://david-dm.org/CloudKidStudio/grunt-game-builder.svg)](https://david-dm.org/CloudKidStudio/grunt-game-builder)
+
 Grunt Project Builder is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build.
 
 ## Requirements
