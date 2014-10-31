@@ -1,28 +1,14 @@
 #!/usr/bin/env node
 
-// Do the default grunt build
-function gruntDefault()
-{
-	var spawn = require('child_process').spawn,
-	grunt = spawn('grunt', [], { cwd: '../../' });
-
-	grunt.stdout.on('data', function (data) {
-		process.stdout.write(data);
-	});
-
-	grunt.stderr.on('data', function (data) {
-		process.stdout.write(data);
-	});
-}
-
 // Check if we should ask for user input
 (function(){
 
 	var fs = require('fs'),
+		path = require('path'),
 		prompt = require('prompt'),
 		_ = require('underscore-contrib'),
 		fileCheck = '.buildFile',
-		buildfile = '../../build.json';
+		buildfile = path.resolve(__dirname, '..', '..', '..', 'build.json');
 
 	if (!fs.existsSync(fileCheck))
 	{
@@ -66,4 +52,28 @@ function gruntDefault()
 		// Build the library
 		gruntDefault();
 	});
+
+	// Do the default grunt build
+	function gruntDefault()
+	{
+		var isWindows = process.platform === 'win32';
+		var cwd = path.dirname(buildfile);
+		var spawn = require('child_process').spawn;
+		var grunt = isWindows ?
+			spawn(process.env.comspec, ['/c', 'grunt'], { cwd: cwd }):
+			spawn('grunt', [], { cwd: cwd });
+
+		grunt.stdout.on('data', function (data) {
+			process.stdout.write(data);
+		});
+
+		grunt.stderr.on('data', function (data) {
+			process.stdout.write(data);
+		});
+
+		grunt.on('error', function(err){
+			console.log("Grunt run error", err);
+		});
+	}
+	
 }());
