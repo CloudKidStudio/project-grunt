@@ -6,7 +6,7 @@
 	var fs = require('fs'),
 		path = require('path'),
 		prompt = require('prompt'),
-		_ = require('underscore-contrib'),
+		_ = require('lodash'),
 		fileCheck = '.buildFile',
 		buildfile = path.resolve(__dirname, '..', '..', '..', 'build.json');
 
