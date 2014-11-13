@@ -6,7 +6,7 @@
 module.exports = function(grunt, options)
 {	
 	// Use underscore utilities
-	var _ = require('underscore-contrib');
+	var _ = require('lodash');
 
 	// The name of the build file
 	var filename = options.cwd + '/' + (options.buildFile || 'build.json');
