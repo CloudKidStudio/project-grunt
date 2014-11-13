@@ -2,8 +2,9 @@ module.exports = function(grunt, options, undefined)
 {
 	// The root plugin directory
 	var path = require('path'),
-		loader = require('load-grunt-config'),
-		options = options || {};
+		loader = require('load-grunt-config');
+	
+	options = options || {};
 
 	// Get the components folder if it's custom
 	var components = 'bower_components';

@@ -52,8 +52,8 @@ module.exports = function(grunt)
 
 		if (!semver.lt(build.version, version))
 		{
-			grunt.fail.warn("Attempting to revert to a lesser version (from "
-			 + build.version + " to " + version + ")");
+			grunt.fail.warn("Attempting to revert to a lesser version (from " +
+				build.version + " to " + version + ")");
 		}
 
 		grunt.log.ok("Version updated to " + version);
@@ -80,9 +80,9 @@ module.exports = function(grunt)
 					grunt.fail.warn("Attempting to update a version on a non-JSON file");
 					return;
 				}
-				var json = grunt.file.readJSON(filePath);
-				json[selection] = version;
-				writeJSON(filePath, json);
+				var fileData = grunt.file.readJSON(filePath);
+				fileData[selection] = version;
+				writeJSON(filePath, fileData);
 				grunt.log.writeln('Updated version in ' + file);
 			}
 			// Substitution plugin
