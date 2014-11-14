@@ -1,6 +1,6 @@
 {
 	"name": "grunt-game-builder",
-	"version": "0.3.5",
+	"version": "0.3.6",
 	"description": "Tasks and scaffolding for an HTML project",
 	"main": "./libs/index.js",
 	"author": {
@@ -25,7 +25,7 @@
 		"grunt-contrib-less": "~0.12.0",
 		"grunt-contrib-uglify": "~0.6.0",
 		"grunt-contrib-watch": "~0.6.1",
-		"grunt-spock-helper": "~0.0.2",
+		"grunt-springroll-helper": "~0.1.1",
 		"grunt-text-replace": "~0.3.12",
 		"grunt-contrib-connect": "~0.9.0",
 		"load-grunt-config": "~0.16.0",
