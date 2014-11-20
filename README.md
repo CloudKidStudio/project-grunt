@@ -22,13 +22,21 @@ mkdir MyProject && cd MyProject
 
 ### 2. Install Plugin
 
-The installation of the plugin requires installing Grunt first and then the plugin. This will create an empty project template structure which you can start to customize.
+The installation of the plugin requires installing Grunt first and then the plugin.
 
 ```shell
 npm install grunt grunt-game-builder
 ```
 
-### 3. Developing
+### 3. Scaffolding Project
+
+Create a barebones scaffolding for a project.
+
+```shell
+npm run-script grunt-game-builder scaffold
+```
+
+### 4. Developing
 
 To run the project in development mode (watches for any changes in files and re-builds) and launch a web-browser to preview your project, run this:
 
