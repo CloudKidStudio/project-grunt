@@ -97,10 +97,7 @@ Task | Description
 ---|---
 **build** | Build the project and libraries in release mode.
 **build-dev** | Build the project and libraries in debug mode.
-**default** | Alias for **build** task.**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
-**dev-main** | Development mode which watches source JavaScript files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
-**assets** | Minify all assets JavaScript files
-**assets-debug** | Combine all assets JavaScript files with source maps for better debugging
+**default** | Alias for **build** task.**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, JavaScript.
 **libs** | Import and rebuild the external dependencies
 **libs-debug** | Import and concat the external dependencies including building source maps for better debugging
 **clean-all** | Delete all generated build files and delete components directory
@@ -121,7 +118,6 @@ Property | Type | Description
 **libraries** | array | The list of external file dependencies imported by Bower. Note: the order of the files is how the output is built.
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
-**assets** _(optional)_ | array | A list of published JavaScript files that should be minified and combined to create an `assets.js` file alongside main and libraries. The common use-case for this list is to minify large EaselJS assets exported from Flash to increase the **dev** task build time. Note: assets are not run through JS hinting.
 
 ## Conditional Compiling
 

@@ -1,6 +1,6 @@
 {
 	"name": "project-grunt",
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "Tasks and scaffolding for an HTML project",
 	"main": "./libs/index.js",
 	"author": {
