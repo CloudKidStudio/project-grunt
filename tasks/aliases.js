@@ -1,79 +1,43 @@
 module.exports = function(grunt)
 {
-	var hasAssets = grunt.config.get('hasAssets');
-
 	grunt.registerTask(
 		'default',
 		'Default task to build all the project code in release mode', 
 		['build']
 	);
 
-	grunt.registerTask(
-		'build', 
-		'compile all elements (pass :dev for dev mode)', 
-		function(n)
-		{
-			if (n == 'dev')
-			{
-				//dev mode
-				grunt.task.run(hasAssets ? [
-					'clean:main',
-					'jshint:main',
-					'concat_sourcemap:main',
-					'replace:main',
-					'clean:css',
-					'less:development',
-					'libs-debug',
-					'clean:assets',
-					'assets-debug',
-				] : [
-					'clean:main',
-					'jshint:main',
-					'concat_sourcemap:main',
-					'replace:main',
-					'clean:css',
-					'less:development',
-					'libs-debug',
-				]);
-			}
-			else 
-			{
-				//release mode
-				grunt.task.run(hasAssets ? [
-					'clean:main',
-					'jshint:main',
-					'uglify:main',
-					'clean:css',
-					'less:release',
-					'libs',
-					'assets'
-				] : [
-					'clean:main',
-					'jshint:main',
-					'uglify:main',
-					'clean:css',
-					'less:release',
-					'libs'
-				]);
-			}
-		}
-	);
-
-	grunt.registerTask(
-		'dev',
-		'Development mode to build the project main, css and assets', 
-		['watch']
-	);
-
-	grunt.registerTask(
-		'dev-main',
-		'Development mode to build the project - faster, only watches main source (no assets or css)', 
-		['watch:main']
-	);
-
 	// Only register the asset tasks if we have assets
-	if (hasAssets)
+	if (grunt.config.get('hasAssets'))
 	{
+		grunt.registerTask(
+			'build-dev', 
+			'compile all elements (pass :dev for dev mode)', [
+				'clean:main',
+				'jshint:main',
+				'concat_sourcemap:main',
+				'replace:main',
+				'clean:css',
+				'less:development',
+				'libs-debug',
+				'clean:assets',
+				'assets-debug',
+			]
+		);
+
+		grunt.registerTask(
+			'build',
+			'compile all elements in release mode', [
+				'clean:main',
+				'jshint:main',
+				'uglify:main',
+				'clean:css',
+				'less:release',
+				'libs',
+				'assets'
+			]
+		);
+
+
 		grunt.registerTask(
 			'assets-debug',
 			'Combine, map all asset JS files uncompressed', 
@@ -88,6 +52,45 @@ module.exports = function(grunt)
 			]
 		);
 	}
+	else
+	{
+		grunt.registerTask(
+			'build-dev', 
+			'compile all elements (pass :dev for dev mode)', [
+				'clean:main',
+				'jshint:main',
+				'concat_sourcemap:main',
+				'replace:main',
+				'clean:css',
+				'less:development',
+				'libs-debug'
+			]
+		);
+
+		grunt.registerTask(
+			'build',
+			'compile all elements in release mode', [
+				'clean:main',
+				'jshint:main',
+				'uglify:main',
+				'clean:css',
+				'less:release',
+				'libs'
+			]
+		);
+	}
+
+	grunt.registerTask(
+		'dev',
+		'Development mode to build the project main, css and assets', 
+		['watch']
+	);
+
+	grunt.registerTask(
+		'dev-main',
+		'Development mode to build the project - faster, only watches main source (no assets or css)', 
+		['watch:main']
+	);
 
 	grunt.registerTask(
 		'clean-all',

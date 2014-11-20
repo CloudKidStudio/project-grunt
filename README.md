@@ -87,8 +87,9 @@ These are the list of grunt tasks for building the project.
 
 Task | Description
 ---|---
-**default** | Does a release build of the project and libraries
-**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
+**build** | Build the project and libraries in release mode.
+**build-dev** | Build the project and libraries in debug mode.
+**default** | Alias for **build** task.**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, main JavaScript or assets.
 **dev-main** | Development mode which watches source JavaScript files only and auto-rebuilds whenever there's a change. Faster than **dev** because it excludes assets building.
 **assets** | Minify all assets JavaScript files
 **assets-debug** | Combine all assets JavaScript files with source maps for better debugging
@@ -98,7 +99,6 @@ Task | Description
 **clean-libs** | Delete all downloaded Bower components and library build files
 **qa** | Build the project in debug mode and run in the web browser by running a NodeJS server
 **run** | Preview the deploy index.html file in a web browser by running a NodeJS server
-**build** | Compile a full build of the project and libraries. With no arguments, performs a release build. Calling it as **build:dev**, performs a debug build
 **version** | Control the project versioning, and update the version number in **build.json** and **bower.json**. This task requires a single argument, for instance, **version:1.0.0** (uses the [Semantic Version](http://semver.org/) format) or increment the version using **version:major**, **version:minor** or **version:patch**. Change the version _before_ doing a build.
 
 ## Build File
