@@ -17,9 +17,6 @@ module.exports = function(grunt, options, undefined)
 	var cwd = process.cwd();
 	process.chdir(path.dirname(__dirname));
 
-	// Add the version task
-	require(path.join(__dirname, 'version.js'))(grunt);
-
 	// If we should called initConfig right away
 	var autoInit = options.autoInit !== undefined ? !!options.autoInit : true;
 
