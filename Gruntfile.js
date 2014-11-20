@@ -1,5 +1,5 @@
 /*
- * grunt-game-builder
+ * project-grunt
  *
  * Copyright (c) 2014 CloudKid
  * Licensed under the MIT license.

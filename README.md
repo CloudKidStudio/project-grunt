@@ -1,6 +1,6 @@
-# Grunt Project Builder [![Dependency Status](https://david-dm.org/CloudKidStudio/grunt-game-builder.svg)](https://david-dm.org/CloudKidStudio/grunt-game-builder) [![Build Status](https://travis-ci.org/CloudKidStudio/grunt-game-builder.svg)](https://travis-ci.org/CloudKidStudio/grunt-game-builder)
+# Project Grunt [![Dependency Status](https://david-dm.org/CloudKidStudio/project-grunt.svg)](https://david-dm.org/CloudKidStudio/project-grunt) [![Build Status](https://travis-ci.org/CloudKidStudio/project-grunt.svg)](https://travis-ci.org/CloudKidStudio/project-grunt)
 
-Grunt Project Builder is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build.
+Project Grunt is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build.
 
 ## Requirements
 
@@ -25,7 +25,7 @@ mkdir MyProject && cd MyProject
 The installation of the plugin requires installing Grunt first and then the plugin.
 
 ```shell
-npm install grunt grunt-game-builder
+npm install grunt project-grunt
 ```
 
 ### 3. Scaffolding Project
@@ -33,7 +33,7 @@ npm install grunt grunt-game-builder
 Create a barebones scaffolding for a project.
 
 ```shell
-npm run-script grunt-game-builder scaffold
+npm run-script project-grunt scaffold
 ```
 
 ### 4. Developing
@@ -46,7 +46,7 @@ grunt dev & grunt run
 
 ## Adding Dependencies
 
-Grunt Project Builder is designed to easily include external dependencies into your project.
+Project Grunt is designed to easily include external dependencies into your project.
 
 Modify the **bower.json** file to include additional libraries into your project. For more information about using Bower please visit the [website](http://bower.io). For instance, if you wanted to include [CreateJS](http://createjs.com), **bower.json** might look like this. Note that the _version_ and _name_ field is automatically updated from the **build.json** file.
 
@@ -162,12 +162,12 @@ Structure | Description
 
 ## Plugin Options
 
-The Grunt Project Builder plugin can accept additional options. Here's an example to add additional arguments:
+The Project Grunt plugin can accept additional options. Here's an example to add additional arguments:
 
 ```js
 module.exports = function(grunt)
 {
-	require('grunt-game-builder')(grunt, {
+	require('project-grunt')(grunt, {
 		jsFolder : "deploy/js",
 		cssFolder : "deploy/css"
 	});
@@ -198,5 +198,5 @@ A _string_ defaults to "deploy/assets/css". The base output folder for CSS files
 
 The default **Gruntfile.js** can be extended easily to allow for custom tasks.
 
-* [Simple Extending](https://github.com/CloudKidStudio/grunt-game-builder/wiki/Simple-Extending)
-* [Advanced Extending](https://github.com/CloudKidStudio/grunt-game-builder/wiki/Advanced-Extending)
+* [Simple Extending](https://github.com/CloudKidStudio/project-grunt/wiki/Simple-Extending)
+* [Advanced Extending](https://github.com/CloudKidStudio/project-grunt/wiki/Advanced-Extending)
