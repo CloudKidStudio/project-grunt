@@ -6,90 +6,36 @@ module.exports = function(grunt)
 		['build']
 	);
 
-	// Only register the asset tasks if we have assets
-	if (grunt.config.get('hasAssets'))
-	{
-		grunt.registerTask(
-			'build-dev', 
-			'compile all elements (pass :dev for dev mode)', [
-				'clean:main',
-				'jshint:main',
-				'concat_sourcemap:main',
-				'replace:main',
-				'clean:css',
-				'less:development',
-				'libs-debug',
-				'clean:assets',
-				'assets-debug',
-			]
-		);
+	grunt.registerTask(
+		'build-dev', 
+		'compile all elements in debug mode', [
+			'clean:main',
+			'jshint:main',
+			'concat:main',
+			'replace:main',
+			'clean:css',
+			'less:development',
+			'libs-debug'
+		]
+	);
 
-		grunt.registerTask(
-			'build',
-			'compile all elements in release mode', [
-				'clean:main',
-				'jshint:main',
-				'uglify:main',
-				'clean:css',
-				'less:release',
-				'libs',
-				'assets'
-			]
-		);
+	grunt.registerTask(
+		'build',
+		'compile all elements in release mode', [
+			'clean:main',
+			'jshint:main',
+			'uglify:main',
+			'clean:css',
+			'less:release',
+			'libs'
+		]
+	);
 
-
-		grunt.registerTask(
-			'assets-debug',
-			'Combine, map all asset JS files uncompressed', 
-			['concat_sourcemap:assets']
-		);
-
-		grunt.registerTask(
-			'assets',
-			'Minify all asset JS files uncompressed', [
-				'clean:assets',
-				'uglify:assets'
-			]
-		);
-	}
-	else
-	{
-		grunt.registerTask(
-			'build-dev', 
-			'compile all elements (pass :dev for dev mode)', [
-				'clean:main',
-				'jshint:main',
-				'concat_sourcemap:main',
-				'replace:main',
-				'clean:css',
-				'less:development',
-				'libs-debug'
-			]
-		);
-
-		grunt.registerTask(
-			'build',
-			'compile all elements in release mode', [
-				'clean:main',
-				'jshint:main',
-				'uglify:main',
-				'clean:css',
-				'less:release',
-				'libs'
-			]
-		);
-	}
 
 	grunt.registerTask(
 		'dev',
 		'Development mode to build the project main, css and assets', 
 		['watch']
-	);
-
-	grunt.registerTask(
-		'dev-main',
-		'Development mode to build the project - faster, only watches main source (no assets or css)', 
-		['watch:main']
 	);
 
 	grunt.registerTask(
@@ -121,7 +67,7 @@ module.exports = function(grunt)
 		'Import using Bower and build debug versions of libraries', [
 			'clean:libraries',
 			'bower:install',
-			'concat_sourcemap:libraries',
+			'concat:libraries',
 			'less:libraries-debug'
 		]
 	);

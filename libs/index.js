@@ -1,10 +1,15 @@
 module.exports = function(grunt, options, undefined)
 {
 	// The root plugin directory
-	var path = require('path'),
-		loader = require('load-grunt-config');
+	var _ = require('lodash'),
+		path = require('path'),
+		loader = require('load-grunt-config'),
+		base = path.dirname(__dirname);
 	
 	options = options || {};
+
+	// Path to the main library-grunt folder
+	var pluginFolder = path.dirname(__dirname);
 
 	// Get the components folder if it's custom
 	var components = 'bower_components';
@@ -14,33 +19,15 @@ module.exports = function(grunt, options, undefined)
 	}
 
 	// We need to load the local grunt plugins
-	var cwd = process.cwd();
-	process.chdir(path.dirname(__dirname));
+	var projectDir = process.cwd();
+	process.chdir(pluginFolder);
 
-	// If we should called initConfig right away
-	var autoInit = options.autoInit !== undefined ? !!options.autoInit : true;
-
-	// Separate grunt config files
-	var config = loader(grunt, {
-		
-		// Path to tasks
-		configPath: path.join(path.dirname(__dirname), 'tasks'),
-
-		// project specific overrides
-		overridePath: path.join(cwd, 'tasks/overrides'),
-
-		// auto grunt.initConfig()
-		init: false,
-
-		// Load the grunt tasks
-		loadGruntTasks : { pattern: [ 'grunt-*' ] },
-
-		// Data based into config
-		data: {
+	// The data arguments
+	var data = _.extend({
 
 			// The name of the library from the build file
 			build: require(path.join(__dirname, 'build-file.js'))(grunt, { 
-				cwd: cwd, 
+				cwd: projectDir, 
 				buildFile : options.buildFile 
 			}),
 
@@ -55,20 +42,50 @@ module.exports = function(grunt, options, undefined)
 			cssFolder: options.cssFolder || '<%= distFolder %>/assets/css',
 
 			// Save the current working directory
-			cwd: cwd
-		}
-	});
-	process.chdir(cwd);
+			cwd: projectDir
+		},
+		options.data || {}
+	);
 
-	// If we don't have assets, remove from the tasks
-	// this is determined by build-file.js
-	if (!grunt.config.get('hasAssets'))
-	{
-		delete config.watch.assets;
-		delete config.uglify.assets;
-		delete config.clean.assets;
-		delete config.concat_sourcemap.assets;
-	}
+	// Separate grunt config files
+	var baseConfig = loader(grunt, {
+		
+		// Path to tasks
+		configPath: path.join(pluginFolder, 'tasks'),
+
+		// project specific overrides
+		overridePath: path.join(projectDir, 'tasks', 'overrides'),
+
+		// auto grunt.initConfig()
+		init: false,
+
+		// Load the grunt tasks
+		loadGruntTasks : { pattern: [ 'grunt-*' ] },
+
+		// Data based into config
+		data: data
+	});
+
+	process.chdir(projectDir);
+
+	// Project-specific config
+	var projectConfig = loader(grunt, {
+
+		// The path for the tasks
+		configPath: path.join(projectDir, 'tasks'),
+
+		// Get the config, don't run
+		autoInit: false, 
+
+		// We don't want to reload builder
+		loadGruntTasks: { pattern: [ 'grunt-*' ] }
+	});
+
+	// Merge the configs
+	var config = _.extend(baseConfig, projectConfig);
+
+	// If we should called initConfig right away
+	var autoInit = options.autoInit !== undefined ? !!options.autoInit : true;
 
 	if (autoInit)
 	{

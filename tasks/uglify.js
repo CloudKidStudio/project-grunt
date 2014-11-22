@@ -19,10 +19,5 @@ module.exports = {
 				drop_console: true
 			}
 		}
-	},
-	assets: {
-		files: {
-			'<%= jsFolder %>/assets.js': '<%= build.js.assets %>'
-		}
 	}
 };

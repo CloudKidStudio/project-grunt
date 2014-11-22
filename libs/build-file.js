@@ -47,9 +47,6 @@ module.exports = function(grunt, options)
 	if (!_.isUndefined(file.assets) && !_.isArray(file.assets))
 		grunt.fail.fatal('"assets" must be an array of files in ' + filename);
 
-	// Let other tasks know if we have assets
-	grunt.config.set('hasAssets', !_.isUndefined(file.assets));
-
 	return {
 		// The name of the app
 		name: file.name,
@@ -71,10 +68,7 @@ module.exports = function(grunt, options)
 			main : _.filter(file.main, isJS),
 
 			// The collection of source files in debug mode
-			mainDebug : _.filter(file.mainDebug || file.main, isJS),
-
-			//asset files (typically assets exported from flash as javascript)
-			assets: _.filter(file.assets || "", isJS)
+			mainDebug : _.filter(file.mainDebug || file.main, isJS)
 		},
 
 		css : {

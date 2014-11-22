@@ -4,7 +4,6 @@
 var fs = require('fs'),
 	path = require('path'),
 	prompt = require('prompt'),
-	_ = require('lodash'),
 	base = path.resolve(__dirname, '..', '..', '..'),
 	bowerFile = path.join(base, 'bower.json'),
 	packageFile = path.join(base, 'package.json'),

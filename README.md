@@ -190,9 +190,6 @@ A _string_ defaults to "deploy/assets/js". The base output folder for JavaScript
 
 A _string_ defaults to "deploy/assets/css". The base output folder for CSS files (libraries.css and main.css).
 
-## Extending Gruntfile.js
+### options.data
 
-The default **Gruntfile.js** can be extended easily to allow for custom tasks.
-
-* [Simple Extending](https://github.com/CloudKidStudio/project-grunt/wiki/Simple-Extending)
-* [Advanced Extending](https://github.com/CloudKidStudio/project-grunt/wiki/Advanced-Extending)
+A _object_ defaults to `{}`. The data to set which can be accessible by all Grunt tasks, for instance `{ "name": "MyApp"}` would allow a substitution `<%= name %>` which would resolve to _MyApp_.

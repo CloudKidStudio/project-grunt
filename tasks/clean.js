@@ -13,9 +13,5 @@ module.exports = {
 		'<%= jsFolder %>/libraries.js.map',
 		'<%= jsFolder %>/libraries.js'
 	],
-	assets: [
-		'<%= jsFolder %>/assets.js.map',
-		'<%= jsFolder %>/assets.js'
-	],
 	components: ['<%= components %>']
 };

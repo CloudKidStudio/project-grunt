@@ -12,18 +12,8 @@ module.exports = {
 		],
 		tasks: [
 			'jshint:main', 
-			'concat_sourcemap:main', 
+			'concat:main', 
 			'replace:main'
-		]
-	},
-	assets: {
-		files: [
-			'Gruntfile.js',
-			'<%= build.js.assets %>',
-			'<%= build.file %>'
-		],
-		tasks: [
-			'concat_sourcemap:assets'
 		]
 	},
 	css: {
