@@ -1,6 +1,6 @@
 {
 	"name": "project-grunt",
-	"version": "0.5.0",
+	"version": "0.5.1",
 	"description": "Tasks and scaffolding for an HTML project",
 	"main": "./libs/index.js",
 	"author": {
@@ -17,7 +17,6 @@
 		"url": "https://github.com/CloudKidStudio/project-grunt"
 	},
 	"dependencies": {
-		"grunt": "^0.4.5",
 		"grunt-bower-task": "~0.4.0",
 		"grunt-contrib-clean": "~0.6.0",
 		"grunt-contrib-concat": "~0.5.0",
@@ -33,6 +32,9 @@
 		"prompt": "~0.2.13",
 		"lodash": "~2.4.1",
 		"semver": "~4.1.0"
+	},
+	"peerDependencies": {
+		"grunt": "~0.4.5"
 	},
 	"keywords": [
 		"gruntplugin",
