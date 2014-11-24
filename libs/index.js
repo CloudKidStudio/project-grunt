@@ -75,7 +75,7 @@ module.exports = function(grunt, options, undefined)
 		configPath: path.join(projectDir, 'tasks'),
 
 		// Get the config, don't run
-		autoInit: false, 
+		init: false, 
 
 		// We don't want to reload builder
 		loadGruntTasks: { pattern: [ 'grunt-*' ] }
