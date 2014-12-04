@@ -1,4 +1,4 @@
-# Project Grunt [![Dependency Status](https://david-dm.org/CloudKidStudio/project-grunt.svg)](https://david-dm.org/CloudKidStudio/project-grunt) [![Build Status](https://travis-ci.org/CloudKidStudio/project-grunt.svg)](https://travis-ci.org/CloudKidStudio/project-grunt)
+# Project Grunt [![Dependency Status](https://david-dm.org/CloudKidStudio/project-grunt.svg)](https://david-dm.org/CloudKidStudio/project-grunt) [![Build Status](https://travis-ci.org/CloudKidStudio/project-grunt.svg)](https://travis-ci.org/CloudKidStudio/project-grunt) [![npm version](https://badge.fury.io/js/project-grunt.svg)](http://badge.fury.io/js/project-grunt)
 
 Project Grunt is a Node plugin which provides initial project scaffolding and common build tasks for creating HTML projects. The plugin requires both [Grunt](http://gruntjs.com/) and [Bower](http://bower.io/) to be installed on the local system in order to build.
 
