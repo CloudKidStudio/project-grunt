@@ -7,7 +7,7 @@ var fs = require('fs'),
 	base = path.resolve(__dirname, '..', '..', '..'),
 	bowerFile = path.join(base, 'bower.json'),
 	packageFile = path.join(base, 'package.json'),
-	buildFile = path.join(base, 'build.json');
+	projectFile = path.join(base, 'project.json');
 
 
 // The root project folder
@@ -60,7 +60,7 @@ function scaffold(file, content, callback)
 function gruntRun()
 {
 	var isWindows = process.platform === 'win32';
-	var cwd = path.dirname(buildFile);
+	var cwd = path.dirname(projectFile);
 	var spawn = require('child_process').spawn;
 	var grunt = isWindows ?
 		spawn(process.env.comspec, ['/c', 'grunt'], { cwd: cwd }):
@@ -90,7 +90,7 @@ scaffold("Gruntfile.js", null, function(file){
 	scaffoldDir("deploy/assets/js");
 
 	// Copy the required files
-	scaffold("build.json");
+	scaffold("project.json");
 	scaffold("deploy/index.html");
 	scaffold("README.md");
 	scaffold(".bowerrc");
@@ -119,25 +119,25 @@ scaffold("Gruntfile.js", null, function(file){
 		if (!err)
 		{
 			// Get the build file as an object
-			var build = JSON.parse(fs.readFileSync(buildFile));
-			build.name = result.name;
-			build.version = result.version;
+			var project = JSON.parse(fs.readFileSync(projectFile));
+			project.name = result.name;
+			project.version = result.version;
 
-			// Update the build file with the new name
-			fs.writeFileSync(buildFile, JSON.stringify(build, null, "\t"));
+			// Update the project file with the new name
+			fs.writeFileSync(projectFile, JSON.stringify(project, null, "\t"));
 
-			// Get the build file as an object
+			// Get the project file as an object
 			var bower = JSON.parse(fs.readFileSync(bowerFile));
 			bower.name = result.name;
 			bower.version = result.version;
 
-			// Update the build file with the new name
+			// Update the project file with the new name
 			fs.writeFileSync(bowerFile, JSON.stringify(bower, null, "\t"));
 
 			var pack = JSON.parse(fs.readFileSync(packageFile));
 			pack.version = result.version;
 
-			// Update the build file with the new name
+			// Update the project file with the new name
 			fs.writeFileSync(packageFile, JSON.stringify(pack, null, "\t"));
 		}
 		gruntRun();

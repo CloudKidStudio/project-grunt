@@ -1,7 +1,7 @@
 module.exports = {
 	libraries: {
 		files: {
-			'<%= cssFolder %>/libraries.css': '<%= build.css.libraries %>',
+			'<%= cssFolder %>/libraries.css': '<%= project.css.libraries %>',
 		},
 		options: {
 			compress: true,
@@ -10,7 +10,7 @@ module.exports = {
 	},
 	"libraries-debug": {
 		files: {
-			'<%= cssFolder %>/libraries.css': '<%= build.css.librariesDebug %>',
+			'<%= cssFolder %>/libraries.css': '<%= project.css.librariesDebug %>',
 		},
 		options: {
 			sourceMap: true,
@@ -21,7 +21,7 @@ module.exports = {
 	},
 	release: {
 		files: {
-			'<%= cssFolder %>/main.css': '<%= build.css.main %>',
+			'<%= cssFolder %>/main.css': '<%= project.css.main %>',
 		},
 		options: {
 			compress: true,
@@ -30,7 +30,7 @@ module.exports = {
 	},
 	development: {
 		files: {
-			'<%= cssFolder %>/main.css': '<%= build.css.mainDebug %>',
+			'<%= cssFolder %>/main.css': '<%= project.css.mainDebug %>',
 		},
 		options: {
 			sourceMap: true,

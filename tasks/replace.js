@@ -10,7 +10,7 @@ module.exports = {
 			to: "false"
 		},{ 
 			from: "VERSION", 
-			to: "\"<%= build.version %>\""
+			to: "\"<%= project.version %>\""
 		}]
 	}
 };

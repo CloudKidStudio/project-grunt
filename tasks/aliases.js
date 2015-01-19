@@ -15,6 +15,7 @@ module.exports = function(grunt)
 			'replace:main',
 			'clean:css',
 			'less:development',
+			'moduleTasksDebug',
 			'libs-debug'
 		]
 	);
@@ -27,6 +28,7 @@ module.exports = function(grunt)
 			'uglify:main',
 			'clean:css',
 			'less:release',
+			'moduleTasks',
 			'libs'
 		]
 	);

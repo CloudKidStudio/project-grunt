@@ -1,27 +1,23 @@
 /**
-*  Encapsulate the build.json format functionality
-*  this converts the build.json file into useable file lists
+*  Encapsulate the project.json format functionality
+*  this converts the project.json file into useable file lists
 *  for running tasks on.
 */
 module.exports = function(grunt, options)
 {	
 	// Use underscore utilities
-	var _ = require('lodash');
+	var _ = require('lodash'),
+		path = require('path'),	
+		filters = require(path.join(__dirname, 'filters.js'));
 
-	// The name of the build file
-	var filename = options.cwd + '/' + (options.buildFile || 'build.json');
+	// The name of the project file
+	var filename = options.cwd + '/' + (options.projectFile || 'project.json');
 
-	// Filter an array of files and only return the javascript files
-	var isJS = function(file){ return /\.js$/.test(file); };
-
-	// Filter an array of files and only return CSS and LESS files
-	var isCSS = function(file){ return /\.(less|css)$/.test(file); };
-
-	// Check for build file
+	// Check for project file
 	if (!grunt.file.exists(filename))
 		grunt.fail.fatal('no ' + filename + ' file is found');
 
-	// Load the build file which contains the list of 
+	// Load the project file which contains the list of 
 	// library and project files to build
 	var file = grunt.file.readJSON(filename);
 
@@ -54,35 +50,38 @@ module.exports = function(grunt, options)
 		// The semantic version of the app
 		version: file.version,
 
-		// The name of the build file
+		// The name of the project file
 		file : filename,
+
+		// The different modules
+		modules: file.modules || null,
 
 		js : {
 			// The collection of library files
-			libraries : _.filter(file.libraries, isJS),
+			libraries : _.filter(file.libraries, filters.isJS),
 
 			// The collection of library files built in debug/unminified mode
-			librariesDebug : _.filter(file.librariesDebug || file.libraries, isJS),
+			librariesDebug : _.filter(file.librariesDebug || file.libraries, filters.isJS),
 
 			// The collection of source files
-			main : _.filter(file.main, isJS),
+			main : _.filter(file.main, filters.isJS),
 
 			// The collection of source files in debug mode
-			mainDebug : _.filter(file.mainDebug || file.main, isJS)
+			mainDebug : _.filter(file.mainDebug || file.main, filters.isJS)
 		},
 
 		css : {
 			// The library css files
-			libraries : _.filter(file.libraries, isCSS),
+			libraries : _.filter(file.libraries, filters.isCSS),
 
 			// The library debug css files
-			librariesDebug : _.filter(file.librariesDebug || file.libraries, isCSS),
+			librariesDebug : _.filter(file.librariesDebug || file.libraries, filters.isCSS),
 
 			// The project css files
-			main : _.filter(file.main, isCSS),
+			main : _.filter(file.main, filters.isCSS),
 
 			// The project debug CSS
-			mainDebug : _.filter(file.mainDebug || file.main, isCSS)
+			mainDebug : _.filter(file.mainDebug || file.main, filters.isCSS)
 		}
 	};
 };

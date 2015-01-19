@@ -48,7 +48,7 @@ grunt dev & grunt run
 
 Project Grunt is designed to easily include external dependencies into your project.
 
-Modify the **bower.json** file to include additional libraries into your project. For more information about using Bower please visit the [website](http://bower.io). For instance, if you wanted to include [CreateJS](http://createjs.com), **bower.json** might look like this. Note that the _version_ and _name_ field is automatically updated from the **build.json** file.
+Modify the **bower.json** file to include additional libraries into your project. For more information about using Bower please visit the [website](http://bower.io). For instance, if you wanted to include [CreateJS](http://createjs.com), **bower.json** might look like this. Note that the _version_ and _name_ field is automatically updated from the **project.json** file.
 
 ```js
 {
@@ -65,7 +65,7 @@ Modify the **bower.json** file to include additional libraries into your project
 }
 ```
 
-Then, update **build.json** to list the files you'd like to include from the libraries.
+Then, update **project.json** to list the files you'd like to include from the libraries.
 
 ```js
 {
@@ -104,11 +104,11 @@ Task | Description
 **clean-libs** | Delete all downloaded Bower components and library build files
 **qa** | Build the project in debug mode and run in the web browser by running a NodeJS server
 **run** | Preview the deploy index.html file in a web browser by running a NodeJS server
-**version** | Control the project versioning, and update the version number in **build.json** and **bower.json**. This task requires a single argument, for instance, **version:1.0.0** (uses the [Semantic Version](http://semver.org/) format) or increment the version using **version:major**, **version:minor** or **version:patch**. Change the version _before_ doing a build.
+**version** | Control the project versioning, and update the version number in **project.json** and **bower.json**. This task requires a single argument, for instance, **version:1.0.0** (uses the [Semantic Version](http://semver.org/) format) or increment the version using **version:major**, **version:minor** or **version:patch**. Change the version _before_ doing a build.
 
-## Build File
+## Project File
 
-The **build.json** file contains the list of all required JavaScript and CSS files in order to build the project. Below describes the different fields of this file.
+The **project.json** file contains the list of all required JavaScript and CSS files in order to build the project. Below describes the different fields of this file.
 
 Property | Type | Description
 ---|---|---
@@ -118,6 +118,7 @@ Property | Type | Description
 **libraries** | array | The list of external file dependencies imported by Bower. Note: the order of the files is how the output is built.
 **mainDebug** _(optional)_ | array | The same as `main` except that this file list is only used when building in `dev` task.
 **librariesDebug** _(optional)_ | array | The same as `libraries` except that this file list is only used when building in `dev` task.
+**modules** _(optional)_ | object | Seperate source code list of files of either JavaScript, CSS/LESS or both.
 
 ## Conditional Compiling
 
@@ -151,7 +152,7 @@ Structure | Description
 **./node_modules/** | The Node plugins required for the build process; this directory should be ignored by the versioning system
 **./src/** | The source JavaScript or CSS/LESS files needed to build the project
 **./bower.json** | The list of Bower dependencies
-**./build.json** | See above, the list of source files and libraries to build
+**./project.json** | See above, the list of source files and libraries to build
 **./Gruntfile.js** | Contains the Grunt automation tasks
 **./package.json** | The list of Node dependencies
 **./README.md** | The readme markdown file describing the project
@@ -174,9 +175,9 @@ module.exports = function(grunt)
 
 A _boolean_ defaults to true. If grunt.initConfig() is automatically called.
 
-### options.buildFile
+### options.projectFile
 
-A _string_ defaults to "build.json". The name of the JSON file which contains the JavaScript, CSS files to build. See the Build File above for more information about what this does.
+A _string_ defaults to "project.json". The name of the JSON file which contains the JavaScript, CSS files to build. See the Build File above for more information about what this does.
 
 ### options.distFolder
 

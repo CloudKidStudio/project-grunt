@@ -4,12 +4,11 @@ module.exports = function(grunt, options, undefined)
 	var _ = require('lodash'),
 		path = require('path'),
 		loader = require('load-grunt-config'),
-		base = path.dirname(__dirname);
+		pluginFolder = path.dirname(__dirname),
+		projectJS = require(path.join(__dirname, 'project.js')),
+		modules = require(path.join(__dirname, 'modules.js'));
 	
 	options = options || {};
-
-	// Path to the main library-grunt folder
-	var pluginFolder = path.dirname(__dirname);
 
 	// Get the components folder if it's custom
 	var components = 'bower_components';
@@ -22,14 +21,17 @@ module.exports = function(grunt, options, undefined)
 	var projectDir = process.cwd();
 	process.chdir(pluginFolder);
 
+	// Get the project file
+	var project = projectJS(grunt, { 
+		cwd: projectDir, 
+		projectFile : options.projectFile 
+	});
+
 	// The data arguments
 	var data = _.extend({
 
-			// The name of the library from the build file
-			build: require(path.join(__dirname, 'build-file.js'))(grunt, { 
-				cwd: projectDir, 
-				buildFile : options.buildFile 
-			}),
+			// The name of the library from the project file
+			project: project,
 
 			// The deploy folder is the content that actually is for distribution
 			distFolder: options.distFolder || 'deploy',
@@ -83,6 +85,13 @@ module.exports = function(grunt, options, undefined)
 
 	// Merge the configs
 	var config = _.extend(baseConfig, projectConfig);
+	
+	// Add the dynamic modules
+	var tasks = modules(project, config);
+
+	// Add the dynamic list of tasks
+	grunt.registerTask('moduleTasks', tasks.moduleTasks);
+	grunt.registerTask('moduleTasksDebug', tasks.moduleTasksDebug);
 
 	// If we should called initConfig right away
 	var autoInit = options.autoInit !== undefined ? !!options.autoInit : true;

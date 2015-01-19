@@ -1,19 +1,19 @@
 module.exports = {
 	libraries: {
 		files: {
-			'<%= jsFolder %>/libraries.js': '<%= build.js.libraries %>'
+			'<%= jsFolder %>/libraries.js': '<%= project.js.libraries %>'
 		}
 	},
 	main: {
 		files: {
-			'<%= jsFolder %>/main.js': '<%= build.js.main %>'
+			'<%= jsFolder %>/main.js': '<%= project.js.main %>'
 		},
 		options: {
 			compress: {
 				global_defs: {
 					"DEBUG": false,
 					"RELEASE": true,
-					"VERSION": "<%= build.version %>"
+					"VERSION": "<%= project.version %>"
 				},
 				dead_code: true,
 				drop_console: true

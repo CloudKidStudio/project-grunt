@@ -7,8 +7,8 @@ module.exports = {
 	main: {
 		files: [
 			'Gruntfile.js',
-			'<%= build.js.main %>',
-			'<%= build.file %>'
+			'<%= project.js.main %>',
+			'<%= project.file %>'
 		],
 		tasks: [
 			'jshint:main', 
@@ -18,8 +18,8 @@ module.exports = {
 	},
 	css: {
 		files: [
-			'<%= build.css.main %>',
-			'<%= build.file %>'
+			'<%= project.css.main %>',
+			'<%= project.file %>'
 		],
 		tasks: [
 			'less:development'
