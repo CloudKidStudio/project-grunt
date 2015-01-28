@@ -7,7 +7,13 @@ module.exports = function(grunt)
 	);
 
 	grunt.registerTask(
-		'build-dev', 
+		'debug',
+		'Default task to build all the project code in debug mode', 
+		['build-debug']
+	);
+
+	grunt.registerTask(
+		'build-debug', 
 		'compile all elements in debug mode', [
 			'clean:main',
 			'jshint:main',

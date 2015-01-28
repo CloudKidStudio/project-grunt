@@ -96,8 +96,10 @@ These are the list of grunt tasks for building the project.
 Task | Description
 ---|---
 **build** | Build the project and libraries in release mode.
-**build-dev** | Build the project and libraries in debug mode.
-**default** | Alias for **build** task.**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, JavaScript.
+**build-debug** | Build the project and libraries in debug mode.
+**default** | Alias for **build** task.
+**debug** | Alias for **build-debug** task.
+**dev** | Development mode to build the project, this watches source files and auto-rebuilds whenever there's a change in CSS, JavaScript.
 **libs** | Import and rebuild the external dependencies
 **libs-debug** | Import and concat the external dependencies including building source maps for better debugging
 **clean-all** | Delete all generated build files and delete components directory
