@@ -1,6 +1,6 @@
 {
 	"name": "project-grunt",
-	"version": "0.6.1",
+	"version": "0.6.2",
 	"description": "Tasks and scaffolding for an HTML project",
 	"main": "./libs/index.js",
 	"author": {
@@ -22,7 +22,7 @@
 		"grunt-contrib-concat": "~0.5.0",
 		"grunt-contrib-jshint": "~0.11.0",
 		"grunt-contrib-less": "~1.0.0",
-		"grunt-contrib-uglify": "~0.7.0",
+		"grunt-contrib-uglify": "~0.8.0",
 		"grunt-contrib-watch": "~0.6.1",
 		"grunt-springroll-helper": "~0.1.1",
 		"grunt-text-replace": "~0.4.0",
@@ -30,8 +30,8 @@
 		"grunt-simple-version": "~0.2.0",
 		"load-grunt-config": "~0.16.0",
 		"prompt": "~0.2.13",
-		"lodash": "~3.0.0",
-		"semver": "~4.2.0"
+		"lodash": "~3.3.0",
+		"semver": "~4.3.0"
 	},
 	"peerDependencies": {
 		"grunt": "~0.4.5"
