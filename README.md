@@ -33,7 +33,8 @@ npm install grunt project-grunt
 Create a barebones scaffolding for a project.
 
 ```shell
-npm run-script project-grunt scaffold
+cd node_modules/project-grunt
+npm run scaffold
 ```
 
 ### 4. Developing
