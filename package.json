@@ -1,6 +1,6 @@
 {
 	"name": "project-grunt",
-	"version": "0.6.3",
+	"version": "0.6.4",
 	"description": "Tasks and scaffolding for an HTML project",
 	"main": "./libs/index.js",
 	"author": {
@@ -30,8 +30,8 @@
 		"grunt-simple-version": "~0.2.0",
 		"load-grunt-config": "~0.17.1",
 		"prompt": "~0.2.13",
-		"lodash": "~3.9.3",
-		"semver": "~4.3.6"
+		"lodash": "~3.10.0",
+		"semver": "~5.0.1"
 	},
 	"peerDependencies": {
 		"grunt": "~0.4.5"

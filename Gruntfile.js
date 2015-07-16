@@ -1,7 +1,7 @@
 /*
  * project-grunt
  *
- * Copyright (c) 2014 CloudKid
+ * Copyright (c) 2015 CloudKid
  * Licensed under the MIT license.
  */
 module.exports = function(grunt)
