@@ -4,10 +4,12 @@ module.exports = {
 	},
 	libraries: {
 		dest: '<%= jsFolder %>/libraries.js',
-		src: ['<%= project.js.librariesDebug %>']
+		src: ['<%= project.js.librariesDebug %>'],
+		nonull: true
 	},
 	main: {
 		dest: '<%= jsFolder %>/main.js',
-		src: ['<%= project.js.mainDebug %>']
+		src: ['<%= project.js.mainDebug %>'],
+		nonull: true
 	}
 };
