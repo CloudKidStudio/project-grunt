@@ -59,7 +59,8 @@ module.exports = function(project, config)
 			// Add to source maps
 			config.concat[name] = {
 				src: jsDebug,
-				dest: '<%= jsFolder %>/' + mod.output + '.js'
+				dest: '<%= jsFolder %>/' + mod.output + '.js',
+				nonull: true
 			};
 
 			// The replacements for web
