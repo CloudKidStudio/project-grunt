@@ -12,9 +12,15 @@ module.exports = function(grunt)
 		['build-debug']
 	);
 
+	grunt.registerTask('_pre-build', []);
+	grunt.registerTask('_post-build', []);
+	grunt.registerTask('_pre-build-debug', []);
+	grunt.registerTask('_post-build-debug', []);
+
 	grunt.registerTask(
 		'build-debug', 
 		'compile all elements in debug mode', [
+			'_pre-build-debug',
 			'clean:main',
 			'jshint:main',
 			'concat:main',
@@ -22,20 +28,23 @@ module.exports = function(grunt)
 			'clean:css',
 			'less:development',
 			'moduleTasksDebug',
-			'libs-debug'
+			'libs-debug',
+			'_post-build-debug'
 		]
 	);
 
 	grunt.registerTask(
 		'build',
 		'compile all elements in release mode', [
+			'_pre-build',
 			'clean:main',
 			'jshint:main',
 			'uglify:main',
 			'clean:css',
 			'less:release',
 			'moduleTasks',
-			'libs'
+			'libs',
+			'_post-build'
 		]
 	);
 
