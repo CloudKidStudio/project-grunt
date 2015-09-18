@@ -23,7 +23,8 @@ module.exports = function(project, config)
 			mod = {
 				output: name,
 				main: mod,
-				mainDebug: mod
+				mainDebug: mod,
+				jshint: true
 			};
 		}
 		else
@@ -35,6 +36,7 @@ module.exports = function(project, config)
 		var jsDebug = _.filter(mod.mainDebug, filters.isJS);
 		var css = _.filter(mod.main, filters.isCSS);
 		var cssDebug = _.filter(mod.mainDebug, filters.isCSS);
+		var jshint = _.isUndefined(mod.jshint) ? true : mod.jshint;
 
 		var clean = [];
 		var output, outputDebug;
@@ -54,7 +56,10 @@ module.exports = function(project, config)
 			};
 
 			// Add to hinting
-			config.jshint.main.push(js);
+			if (jshint)
+			{
+				config.jshint.main.push(js);
+			}
 
 			// Add to source maps
 			config.concat[name] = {
